@@ -1,6 +1,29 @@
 <resources>
     <string name="app_name">MyMovies</string>
-    <string name="movie_name">The Guilty</string>
+    <string name="lbl_movie_title">Title</string>
+    <string name="lbl_movie_year">Year</string>
+    <string name="lbl_movie_rate">Rate</string>
+    <string name="lbl_movie_metascore">Metascore</string>
+    <string name="lbl_movie_overview">Overview</string>
+    <string name="lbl_movie_crew">Featured Crew</string>
+    <string name="lbl_movie_director">Director</string>
+    <string name="lbl_movie_stars">Stars</string>
+    <string name="lbl_movie_votes">Votes</string>
+    <string name="lbl_movie_gross">Gross</string>
+
+    <string name="txt_movie_title">Title</string>
+    <string name="txt_movie_year">2019</string>
+    <string name="txt_movie_rate">7.5</string>
+    <string name="txt_movie_metascore">5665</string>
+    <string name="txt_movie_overview">Overview</string>
+    <string name="txt_movie_synopsis">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.</string>
+    <string name="txt_movie_crew">Featured Crew</string>
+    <string name="txt_movie_director">Anthony Russo</string>
+    <string name="txt_movie_stars">Robert Downey Jr.</string>
+    <string name="txt_movie_votes">6.7</string>
+    <string name="txt_movie_gross">$31.4</string>
+
+
     <string name="from">Asal</string>
     <string name="list">List</string>
     <string name="grid">Grid</string>
@@ -10,6 +33,10 @@
     <string name="share">share</string>
     <string name="separator"> | </string>
     <string name="lbl_stars">Stars : </string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
+    <string name="todo">TODO</string>
 
 
 </resources>
