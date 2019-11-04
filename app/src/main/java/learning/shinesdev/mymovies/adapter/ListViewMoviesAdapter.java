@@ -2,6 +2,8 @@ package learning.shinesdev.mymovies.adapter;
 
 import android.content.Context;
 
+import android.content.res.Resources;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
@@ -107,11 +110,7 @@ public class ListViewMoviesAdapter extends BaseAdapter {
             txtStars.setText(movie.getStars());
             txtVotes.setText(movie.getVotes());
             txtGross.setText(movie.getGross());
-
-            Glide.with(context)
-                    .load(movie.getImage())
-                    .apply(new RequestOptions().override(100))
-                    .into(imgThumb);
+            imgThumb.setImageResource(context.getResources().getIdentifier(movie.getImage(),"drawable",context.getPackageName()));
         }
     }
 }

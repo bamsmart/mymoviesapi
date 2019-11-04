@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="@dimen/activity_vertical_margin">
 
-
-    <ImageView
-        android:id="@+id/img_movie_thumb"
-        android:layout_width="100dp"
-        android:layout_height="150dp"
-        android:scaleType="fitXY" />
+        <ImageView
+            android:id="@+id/img_movie_thumb"
+            android:layout_gravity="top"
+            android:foregroundGravity="top"
+            android:scaleType="fitXY"
+            android:layout_width="140dp"
+            android:layout_height="180dp" />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="2"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignTop="@+id/img_movie_thumb"
         android:layout_toEndOf="@id/img_movie_thumb"
         android:layout_toRightOf="@id/img_movie_thumb"
+        android:paddingStart="@dimen/activity_horizontal_margin"
         android:orientation="vertical">
 
         <LinearLayout
@@ -43,7 +46,7 @@
                 android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorBluePrimaryDark"
-                tools:text="@string/movie_name" />
+                tools:text="@string/lbl_movie_title" />
 
             <TextView
                 android:id="@+id/txt_movie_year"
@@ -133,18 +136,18 @@
             android:id="@+id/txt_movie_sinopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="3"
             android:text="@string/description" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/lbl_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Director: "/>
+                android:text="@string/lbl_movie_director" />
             <TextView
                 android:id="@+id/txt_movie_director"
                 android:layout_width="wrap_content"
@@ -227,4 +230,4 @@
 </LinearLayout>
 
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

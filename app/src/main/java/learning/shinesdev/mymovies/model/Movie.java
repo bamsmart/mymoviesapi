@@ -168,7 +168,10 @@ public class Movie implements Parcelable{
     public Movie(){
 
     }
-
+    public Movie(String title, String overview){
+        this.title = title;
+        this.synopsis = overview;
+    }
     protected Movie(Parcel in) {
         number = in.readString();
         title = in.readString();
