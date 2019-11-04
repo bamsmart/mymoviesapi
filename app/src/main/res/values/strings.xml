@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyMovies</string>
+    <string name="movie_name">The Guilty</string>
+    <string name="from">Asal</string>
+    <string name="list">List</string>
+    <string name="grid">Grid</string>
+    <string name="with_cardview">with CardView</string>
+    <string name="description">description</string>
+    <string name="favorite">favorite</string>
+    <string name="share">share</string>
+    <string name="separator"> | </string>
+    <string name="lbl_stars">Stars : </string>
+
+
+</resources>

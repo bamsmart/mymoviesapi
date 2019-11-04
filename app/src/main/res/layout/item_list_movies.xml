@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/activity_vertical_margin">
+
+
+    <ImageView
+        android:id="@+id/img_movie_thumb"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignTop="@+id/img_movie_thumb"
+        android:layout_toEndOf="@id/img_movie_thumb"
+        android:layout_toRightOf="@id/img_movie_thumb"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_movie_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                tools:text="1. " />
+
+            <TextView
+                android:id="@+id/txt_movie_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBluePrimaryDark"
+                tools:text="@string/movie_name" />
+
+            <TextView
+                android:id="@+id/txt_movie_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                tools:text=" (2018)" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:showDividers="middle">
+
+            <TextView
+                android:id="@+id/txt_movie_age_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" | " />
+
+            <TextView
+                android:id="@+id/txt_movie_minutes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="85 min " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" | " />
+
+            <TextView
+                android:id="@+id/txt_movie_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crime,Drama, Thriller" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+           <ImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/abc_vector_test"/>
+
+            <TextView
+                android:id="@+id/txt_movie_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7.5" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/abc_vector_test"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rate" />
+
+            <TextView
+                android:id="@+id/txt_movie_metascore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorGreenLight"
+                android:textColor="@color/colorWhite"
+                android:text="86" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Metascore" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_movie_sinopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <TextView
+                android:id="@+id/lbl_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Director: "/>
+            <TextView
+                android:id="@+id/txt_movie_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorBluePrimary"
+                android:layout_toRightOf="@+id/lbl_director"
+                android:text="Gustav Moiler"/>
+
+            <TextView
+                android:id="@+id/lbl_separator_director"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toRightOf="@+id/txt_movie_director"
+                android:text="@string/separator"/>
+
+            <TextView
+                android:id="@+id/lbl_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toRightOf="@+id/lbl_separator_director"
+                android:text="@string/lbl_stars"/>
+
+            <TextView
+                android:id="@+id/txt_movie_stars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:textColor="@color/colorBluePrimary"
+                android:layout_toRightOf="@+id/lbl_stars"
+                android:text="Jacob Cedergren"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/separator"/>
+        </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="Votes: "/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="31,523"/>
+    <TextView
+        android:id="@+id/txt_movie_votes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/separator"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Gross: "/>
+
+    <TextView
+        android:id="@+id/txt_movie_gross"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="$0.21M"/>
+</LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
