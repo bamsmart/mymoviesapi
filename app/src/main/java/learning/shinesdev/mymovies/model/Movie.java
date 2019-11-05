@@ -15,7 +15,7 @@ public class Movie implements Parcelable {
             return new Movie[size];
         }
     };
-    private String number;
+
     private String title;
     private String nextTitle1;
     private String nextTitle2;
@@ -41,7 +41,6 @@ public class Movie implements Parcelable {
     }
 
     private Movie(Parcel in) {
-        number = in.readString();
         title = in.readString();
         nextTitle1 = in.readString();
         nextTitle2 = in.readString();
@@ -65,10 +64,6 @@ public class Movie implements Parcelable {
         nextImage3 = in.readString();
     }
 
-    public static Creator<Movie> getCREATOR() {
-        return CREATOR;
-    }
-
     public String getImage() {
         return image;
     }
@@ -77,13 +72,7 @@ public class Movie implements Parcelable {
         this.image = image;
     }
 
-    public String getNumber() {
-        return number;
-    }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
 
     public String getTitle() {
         return title;
@@ -229,13 +218,6 @@ public class Movie implements Parcelable {
         this.nextImage3 = nextImage3;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
 
     @Override
     public int describeContents() {
@@ -244,7 +226,6 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int i) {
-        dest.writeString(number);
         dest.writeString(title);
         dest.writeString(nextTitle1);
         dest.writeString(nextTitle2);

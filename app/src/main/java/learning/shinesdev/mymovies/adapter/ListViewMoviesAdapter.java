@@ -88,7 +88,6 @@ public class ListViewMoviesAdapter extends BaseAdapter {
         }
 
         void bind(Movie movie) {
-            txtNumber.setText(movie.getNumber());
             txtTitle.setText(movie.getTitle());
             txtYear.setText(movie.getYear());
             txtAgeGroup.setText(movie.getGroup());

@@ -20,12 +20,12 @@
       "vote_average": 8.3,
       "vote_count": 6937,
       "popularity": 358.799,
-      "rating": 7.3
+      "rating": 7.4
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
-      "duration": "147 min",
+      "genre": "Action, Thriller",
+      "duration": "90 min",
       "metascore": 85,
       "director": "David Leitch",
       "stars": "Rhett Reese,Ryan Reynolds",
@@ -46,9 +46,9 @@
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
-      "duration": "147 min",
-      "metascore": 85,
+      "genre": "Action, Thriller",
+      "duration": "90 min",
+      "metascore": 84,
       "director": "Peter Ramsey, Bob Persichetti",
       "stars": "Phil Lord, Steve Ditko",
       "gross": "$0.21M",
@@ -64,13 +64,13 @@
       "vote_average": 7.6,
       "vote_count": 138,
       "popularity": 32.969,
-      "rating": 7.3
+      "rating": 7.2
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
-      "metascore": 85,
+      "metascore": 83,
       "director": "Rob Marshall",
       "stars": "David Magee",
       "gross": "$0.21M",
@@ -86,11 +86,11 @@
       "vote_average": 8.4,
       "vote_count": 349,
       "popularity": 31.76,
-      "rating": 7.3
+      "rating": 7.2
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Aris Nugraha",
@@ -108,13 +108,13 @@
       "vote_average": 7,
       "vote_count": 285,
       "popularity": 87.194,
-      "rating": 7.3
+      "rating": 7.1
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
-      "metascore": 85,
+      "metascore": 83,
       "director": "Otto Bathurst",
       "stars": "Ben Chandler",
       "gross": "$0.21M",
@@ -130,13 +130,13 @@
       "vote_average": 7,
       "vote_count": 38,
       "popularity": 16.876,
-      "rating": 7.3
+      "rating": 7.0
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
-      "metascore": 85,
+      "metascore": 82,
       "director": "Ruben Fleischer",
       "stars": "Scott Rosenberg, Kelly Marcel, Jeff Pinkner",
       "gross": "$0.21M",
@@ -152,11 +152,11 @@
       "vote_average": 5.3,
       "vote_count": 31,
       "popularity": 33.909,
-      "rating": 7.3
+      "rating": 7.0
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Steven Caple Jr.",
@@ -174,11 +174,11 @@
       "vote_average": 5.5,
       "vote_count": 30,
       "popularity": 11.162,
-      "rating": 7.3
+      "rating": 6.9
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "M. Night Shyamalan",
@@ -196,11 +196,11 @@
       "vote_average": 6.4,
       "vote_count": 170,
       "popularity": 49.661,
-      "rating": 7.3
+      "rating": 6.9
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Donovan Marsh",
@@ -218,11 +218,11 @@
       "vote_average": 8,
       "vote_count": 6840,
       "popularity": 15.153,
-      "rating": 7.3
+      "rating": 6.8
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Dean DeBlois",
@@ -240,7 +240,7 @@
       "vote_average": 6.9,
       "vote_count": 19,
       "popularity": 2.492,
-      "rating": 7.3
+      "rating": 6.7
     },
     {
       "group": "PG-13",
@@ -253,7 +253,7 @@
       "year": "(2018)",
       "original_language": "en",
       "original_title": "Dragon Ball: The Path to Power",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -262,11 +262,11 @@
       "overview": "A retelling of Dragon Ball's origin with a different take on the meeting of Goku, Bulma, and Kame-Sen'nin. It also retells the Red Ribbon Army story; but this time they find Goku rather than Goku finding them.",
       "poster_path": "poster_dragonball",
       "popularity": 139.023,
-      "rating": 7.3
+      "rating": 6.7
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -296,7 +296,7 @@
       "release_date": "2011-04-17",
       "year": "(2011)",
       "poster_path": "poster_game",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -312,7 +312,7 @@
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -334,7 +334,7 @@
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -358,7 +358,7 @@
       "group": "PG-13",
       "release_date": "2015-08-23",
       "year": "(2015)",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -380,7 +380,7 @@
     },
     {
       "group": "PG-13",
-      "genre": "Drama, Action, Thriller",
+      "genre": "Action, Thriller",
       "duration": "147 min",
       "metascore": 85,
       "director": "Gustav Moller",
@@ -410,9 +410,9 @@
       "year": "(2018)",
       "original_language": "en",
       "original_title": "Bumblebee",
-      "genre": "Drama, Action, Thriller",
-      "duration": "147 min",
-      "metascore": 85,
+      "genre": "Action, Thriller",
+      "duration": "130 min",
+      "metascore": 84,
       "director": "Travis Knight",
       "stars": "Christina Hodson",
       "gross": "$0.21M",
