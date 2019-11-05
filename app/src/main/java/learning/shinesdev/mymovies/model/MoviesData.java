@@ -1,8 +1,6 @@
 package learning.shinesdev.mymovies.model;
 
 import android.content.Context;
-import android.os.Parcel;
-import android.util.Log;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,15 +13,16 @@ import learning.shinesdev.mymovies.utils.GlobalVariable;
 
 
 public class MoviesData {
+    private GlobalVariable var;
     private Context context;
-    GlobalVariable var;
+
     public MoviesData(Context context) {
         this.context = context;
     }
 
-    public ArrayList<Movie> getListData(){
+    public ArrayList<Movie> getListData() {
         ArrayList<Movie> list = new ArrayList<>();
-
+        var = new GlobalVariable();
         try {
             JSONObject jsonObj = new JSONObject(loadJSONFromAsset());
             JSONArray jsonArr = jsonObj.getJSONArray(var.EX_MOVIE_ROOT);
@@ -38,7 +37,7 @@ public class MoviesData {
                 movie.setDuration(obj.getString(var.EX_MOVIE_DURATION));
                 movie.setGenre(obj.getString(var.EX_MOVIE_GENRE));
                 movie.setRating(obj.getString(var.EX_MOVIE_RATING));
-                movie.setMetascore(obj.getString(var.EX_MOVIE_METASCORE));;
+                movie.setMetascore(obj.getString(var.EX_MOVIE_METASCORE));
                 movie.setSynopsis(obj.getString(var.EX_MOVIE_SYNOPSIS));
                 movie.setDirector(obj.getString(var.EX_MOVIE_DIRECTOR));
                 movie.setStars(obj.getString(var.EX_MOVIE_STARS));
@@ -48,7 +47,7 @@ public class MoviesData {
 
                 list.add(movie);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -57,7 +56,7 @@ public class MoviesData {
 
 
     public String loadJSONFromAsset() {
-        String json = null;
+        String json;
         try {
             InputStream is = context.getAssets().open("movie.json");
             int size = is.available();

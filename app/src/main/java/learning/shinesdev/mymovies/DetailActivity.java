@@ -1,75 +1,70 @@
 package learning.shinesdev.mymovies;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
+import androidx.appcompat.app.AppCompatActivity;
 
 import learning.shinesdev.mymovies.model.Movie;
 import learning.shinesdev.mymovies.utils.GlobalVariable;
 
 public class DetailActivity extends AppCompatActivity {
     private GlobalVariable var;
-    private TextView txtNumber;
     private TextView txtTitle;
+    private TextView txtNextTitle1;
+    private TextView txtNextTitle2;
+    private TextView txtNextTitle3;
     private TextView txtYear;
-    private TextView txtAgeGroup;
-    private TextView txtDuration;
-    private TextView txtGenre;
-    private TextView txtRate;
-    private TextView txtMetascore;
     private TextView txtSynopnsis;
     private TextView txtDirector;
     private TextView txtStars;
     private TextView txtVotes;
-    private TextView txtGross;
     private ImageView imgThumb;
+    private ImageView imgThumb1;
+    private ImageView imgThumb2;
+    private ImageView imgThumb3;
 
-    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        //txtNumber = findViewById(R.id.txt_movie_number);
+        var = new GlobalVariable();
+
         txtTitle = findViewById(R.id.txt_movie_title);
-        //txtYear = findViewById(R.id.txt_movie_year);
-        //txtAgeGroup = findViewById(R.id.txt_movie_age_group);
-        //txtDuration = findViewById(R.id.txt_movie_minutes);
-        //txtRate = findViewById(R.id.txt_movie_rating);
-        //txtMetascore = findViewById(R.id.txt_movie_metascore);
+        txtNextTitle1 = findViewById(R.id.txt_movie_title_1);
+        txtNextTitle2 = findViewById(R.id.txt_movie_title_2);
+        txtNextTitle3 = findViewById(R.id.txt_movie_title_3);
+        txtYear = findViewById(R.id.txt_movie_year);
         txtSynopnsis = findViewById(R.id.txt_movie_synopsis);
-        //txtDirector = findViewById(R.id.txt_movie_director);
-        //txtStars = findViewById(R.id.txt_movie_stars);
-        //txtVotes = findViewById(R.id.txt_movie_votes);
-        //txtGross = findViewById(R.id.txt_movie_gross);
-        //imgThumb = findViewById(R.id.img_movie_thumb);
+        txtDirector = findViewById(R.id.txt_movie_director);
+        txtStars = findViewById(R.id.txt_movie_stars);
+        txtVotes = findViewById(R.id.txt_movie_votes);
+        imgThumb = findViewById(R.id.img_movie_thumb);
+        imgThumb1 = findViewById(R.id.img_thumb_1);
+        imgThumb2 = findViewById(R.id.img_thumb_2);
+        imgThumb3 = findViewById(R.id.img_thumb_3);
 
         loadData();
     }
 
-    void loadData(){
+    void loadData() {
         Movie movie = getIntent().getParcelableExtra(var.EX_MOVIE);
-        //txtNumber.setText(movie.getNumber());
         txtTitle.setText(movie.getTitle());
-        //txtYear.setText(movie.getYear());
-        //txtAgeGroup.setText(movie.getGroup());
-        //txtDuration.setText(movie.getDuration());
-        //txtRate.setText(movie.getRating());
-        //txtMetascore.setText(movie.getMetascore());
-        txtSynopnsis.setText(movie.getSynopsis());
-        //txtDirector.setText(movie.getDirector());
-        //txtStars.setText(movie.getStars());
-        //txtVotes.setText(movie.getVotes());
-        //txtGross.setText(movie.getGross());
+        txtNextTitle1.setText(movie.getNextTitle1());
+        txtNextTitle2.setText(movie.getNextTitle2());
+        txtNextTitle3.setText(movie.getNextTitle3());
 
-        /*Glide.with(getApplicationContext())
-                .load(movie.getImage())
-                .apply(new RequestOptions().override(100))
-                .into(imgThumb);*/
+        txtYear.setText(movie.getYear());
+        txtSynopnsis.setText(movie.getSynopsis());
+        txtDirector.setText(movie.getDirector());
+        txtStars.setText(movie.getStars());
+        txtVotes.setText(movie.getVotes());
+
+        imgThumb.setImageResource(getResources().getIdentifier(movie.getImage(), "drawable", getPackageName()));
+        imgThumb1.setImageResource(getResources().getIdentifier(movie.getNextImage1(), "drawable", getPackageName()));
+        imgThumb2.setImageResource(getResources().getIdentifier(movie.getNextImage2(), "drawable", getPackageName()));
+        imgThumb3.setImageResource(getResources().getIdentifier(movie.getNextImage3(), "drawable", getPackageName()));
     }
 }

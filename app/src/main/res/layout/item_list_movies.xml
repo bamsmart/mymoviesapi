@@ -6,24 +6,22 @@
     android:orientation="horizontal"
     android:padding="@dimen/activity_vertical_margin">
 
-        <ImageView
-            android:id="@+id/img_movie_thumb"
-            android:layout_gravity="top"
-            android:foregroundGravity="top"
-            android:scaleType="fitXY"
-            android:layout_width="140dp"
-            android:layout_height="180dp" />
+    <ImageView
+        android:id="@+id/img_movie_thumb"
+        android:layout_width="140dp"
+        android:layout_height="180dp"
+        android:layout_gravity="top"
+        android:contentDescription="@string/todo"
+        android:foregroundGravity="top"
+        android:scaleType="fitXY" />
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_weight="2"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_alignTop="@+id/img_movie_thumb"
-        android:layout_toEndOf="@id/img_movie_thumb"
-        android:layout_toRightOf="@id/img_movie_thumb"
+        android:layout_weight="2"
+        android:orientation="vertical"
         android:paddingStart="@dimen/activity_horizontal_margin"
-        android:orientation="vertical">
+        android:paddingEnd="@dimen/activity_horizontal_margin">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,17 +41,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
+                android:textColor="@color/colorBluePrimaryDark"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorBluePrimaryDark"
                 tools:text="@string/lbl_movie_title" />
 
             <TextView
                 android:id="@+id/txt_movie_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:ellipsize="end"
                 android:maxLines="2"
+                android:textColor="@color/colorGreyDarker"
                 tools:text=" (2018)" />
         </LinearLayout>
 
@@ -67,167 +67,191 @@
                 android:id="@+id/txt_movie_age_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="R" />
+                android:text="@string/r"
+                android:textColor="@color/colorGreyDark" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" | " />
+                android:text=" | "
+                android:textColor="@color/colorGreyDark" />
 
             <TextView
                 android:id="@+id/txt_movie_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="85 min " />
+                android:text="@string/_85_min"
+                android:textColor="@color/colorGreyDark" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" | " />
+                android:text=" | "
+                android:textColor="@color/colorGreyDark" />
 
             <TextView
                 android:id="@+id/txt_movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crime,Drama, Thriller" />
+                android:text="Crime,Drama, Thriller"
+                android:textColor="@color/colorGreyDark" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
-           <ImageView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:src="@drawable/abc_vector_test"/>
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginEnd="3dp"
+                android:src="@drawable/stars" />
 
             <TextView
                 android:id="@+id/txt_movie_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7.5" />
+                android:text="@string/_7_5"
+                android:textColor="@color/colorGreyDarker" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/abc_vector_test"/>
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="3dp"
+                android:contentDescription="@string/txt_movie_votes"
+                android:src="@drawable/silver_star" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rate" />
+                android:text="@string/txt_movie_votes"
+                android:textColor="@color/colorGreyDarker" />
 
             <TextView
                 android:id="@+id/txt_movie_metascore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="3dp"
                 android:background="@color/colorGreenLight"
-                android:textColor="@color/colorWhite"
-                android:text="86" />
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
+                android:text="86"
+                android:textColor="@color/colorWhite" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Metascore" />
+                android:text="@string/lbl_movie_metascore"
+                android:textColor="@color/colorGreyDarker" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/txt_movie_sinopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:maxLines="3"
-            android:text="@string/description" />
+            android:text="@string/description"
+            android:textColor="@color/colorGreyDarker" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
 
             <TextView
                 android:id="@+id/lbl_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_movie_director" />
+                android:text="@string/lbl_movie_director"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/txt_movie_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/colorBluePrimary"
                 android:layout_toRightOf="@+id/lbl_director"
-                android:text="Gustav Moiler"/>
+                android:text="@string/gustav_moiler"
+                android:textColor="@color/colorBluePrimary"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/lbl_separator_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_toRightOf="@+id/txt_movie_director"
-                android:text="@string/separator"/>
+                android:layout_toEndOf="@+id/txt_movie_director" />
 
             <TextView
                 android:id="@+id/lbl_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/lbl_director"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_toRightOf="@+id/lbl_separator_director"
-                android:text="@string/lbl_stars"/>
+                android:text="@string/lbl_stars"
+                android:textColor="@color/colorGreyDark"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/txt_movie_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_below="@+id/lbl_director"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:textColor="@color/colorBluePrimary"
                 android:layout_toRightOf="@+id/lbl_stars"
-                android:text="Jacob Cedergren"/>
+                android:text="@string/jacob_cedergren"
+                android:textColor="@color/colorBluePrimary"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:text="@string/votes"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_31_523"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/txt_movie_votes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:text="@string/separator"/>
-        </RelativeLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:text="Votes: "/>
+                android:text="@string/separator" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="31,523"/>
-    <TextView
-        android:id="@+id/txt_movie_votes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginEnd="5dp"
-        android:text="@string/separator"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gross"
+                android:textSize="11sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Gross: "/>
-
-    <TextView
-        android:id="@+id/txt_movie_gross"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="$0.21M"/>
-</LinearLayout>
+            <TextView
+                android:id="@+id/txt_movie_gross"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_0_21m"
+                android:textSize="11sp" />
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>

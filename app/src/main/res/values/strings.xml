@@ -1,12 +1,13 @@
 <resources>
-    <string name="app_name">MyMovies</string>
+    <string name="app_name">My Movies</string>
+    <string name="detail_movie_name">Detail Movie</string>
     <string name="lbl_movie_title">Title</string>
     <string name="lbl_movie_year">Year</string>
     <string name="lbl_movie_rate">Rate</string>
     <string name="lbl_movie_metascore">Metascore</string>
     <string name="lbl_movie_overview">Overview</string>
     <string name="lbl_movie_crew">Featured Crew</string>
-    <string name="lbl_movie_director">Director</string>
+    <string name="lbl_movie_director">Director : </string>
     <string name="lbl_movie_stars">Stars</string>
     <string name="lbl_movie_votes">Votes</string>
     <string name="lbl_movie_gross">Gross</string>
@@ -33,7 +34,16 @@
     <string name="share">share</string>
     <string name="separator"> | </string>
     <string name="lbl_stars">Stars : </string>
+    <string name="votes">Votes:</string>
+    <string name="jacob_cedergren">Jacob Cedergren</string>
+    <string name="r">R</string>
+    <string name="_31_523">31,523</string>
+    <string name="gross">Gross:</string>
+    <string name="_0_21m">$0.21M</string>
     <string name="todo">TODO</string>
+    <string name="_7_5">7.5</string>
+    <string name="_85_min">85 min</string>
+    <string name="gustav_moiler">Gustav Moiler</string>
 
 
 </resources>

@@ -1,20 +1,12 @@
 package learning.shinesdev.mymovies.adapter;
 
 import android.content.Context;
-
-import android.content.res.Resources;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.Resource;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 
@@ -25,12 +17,12 @@ public class ListViewMoviesAdapter extends BaseAdapter {
     private final Context context;
     private ArrayList<Movie> movies = new ArrayList<>();
 
-    public void setMovie(ArrayList<Movie> movies) {
-        this.movies = movies;
-    }
-
     public ListViewMoviesAdapter(Context context) {
         this.context = context;
+    }
+
+    public void setMovie(ArrayList<Movie> movies) {
+        this.movies = movies;
     }
 
     @Override
@@ -69,7 +61,6 @@ public class ListViewMoviesAdapter extends BaseAdapter {
         private TextView txtYear;
         private TextView txtAgeGroup;
         private TextView txtDuration;
-        private TextView txtGenre;
         private TextView txtRate;
         private TextView txtMetascore;
         private TextView txtSynopnsis;
@@ -83,7 +74,6 @@ public class ListViewMoviesAdapter extends BaseAdapter {
         ViewHolder(View view) {
             txtNumber = view.findViewById(R.id.txt_movie_number);
             txtTitle = view.findViewById(R.id.txt_movie_title);
-            txtYear = view.findViewById(R.id.txt_movie_year);
             txtYear = view.findViewById(R.id.txt_movie_year);
             txtAgeGroup = view.findViewById(R.id.txt_movie_age_group);
             txtDuration = view.findViewById(R.id.txt_movie_minutes);
@@ -110,7 +100,7 @@ public class ListViewMoviesAdapter extends BaseAdapter {
             txtStars.setText(movie.getStars());
             txtVotes.setText(movie.getVotes());
             txtGross.setText(movie.getGross());
-            imgThumb.setImageResource(context.getResources().getIdentifier(movie.getImage(),"drawable",context.getPackageName()));
+            imgThumb.setImageResource(context.getResources().getIdentifier(movie.getImage(), "drawable", context.getPackageName()));
         }
     }
 }
