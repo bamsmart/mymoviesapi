@@ -73,8 +73,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" | "
-                android:textColor="@color/colorGreyDark" />
+                android:text="@string/separator"
+                android:textColor="@color/colorGreyDark"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/txt_movie_minutes"
@@ -86,14 +87,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" | "
-                android:textColor="@color/colorGreyDark" />
+                android:text="@string/separator"
+                android:textColor="@color/colorGreyDark"
+                tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/txt_movie_genre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Crime,Drama, Thriller"
+                android:text="@string/lbl_movie_votes"
                 android:textColor="@color/colorGreyDark" />
         </LinearLayout>
 
@@ -108,7 +109,8 @@
                 android:layout_width="17dp"
                 android:layout_height="17dp"
                 android:layout_marginEnd="3dp"
-                android:src="@drawable/stars" />
+                android:src="@drawable/stars"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/txt_movie_rating"
@@ -140,7 +142,7 @@
                 android:background="@color/colorGreenLight"
                 android:paddingStart="2dp"
                 android:paddingEnd="2dp"
-                android:text="86"
+                android:text="@string/separator"
                 android:textColor="@color/colorWhite" />
 
             <TextView
@@ -176,13 +178,12 @@
                 android:id="@+id/txt_movie_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/lbl_director"
+                android:layout_toEndOf="@+id/lbl_director"
                 android:text="@string/gustav_moiler"
                 android:textColor="@color/colorBluePrimary"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/lbl_separator_director"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -207,7 +208,7 @@
                 android:layout_below="@+id/txt_movie_director"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
-                android:layout_toRightOf="@+id/lbl_stars"
+                android:layout_toEndOf="@+id/lbl_stars"
                 android:text="@string/jacob_cedergren"
                 android:textColor="@color/colorBluePrimary"
                 android:textSize="12sp" />

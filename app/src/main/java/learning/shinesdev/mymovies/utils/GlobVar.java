@@ -1,11 +1,9 @@
 package learning.shinesdev.mymovies.utils;
 
-public class GlobalVariable {
-
+public class GlobVar {
     public static final String EX_MOVIE = "movie";
     public static final String EX_MOVIE_ROOT = "data";
     public static final String EX_MOVIE_TITLE = "original_title";
-    public static final String EX_MOVIE_DATE = "release_date";
     public static final String EX_MOVIE_YEAR = "year";
     public static final String EX_MOVIE_GROUP = "group";
     public static final String EX_MOVIE_DURATION = "duration";

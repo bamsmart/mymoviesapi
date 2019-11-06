@@ -13,24 +13,20 @@ import java.util.ArrayList;
 import learning.shinesdev.mymovies.adapter.ListViewMoviesAdapter;
 import learning.shinesdev.mymovies.model.Movie;
 import learning.shinesdev.mymovies.model.MoviesData;
-import learning.shinesdev.mymovies.utils.GlobalVariable;
+import learning.shinesdev.mymovies.utils.GlobVar;
 
 public class MainActivity extends AppCompatActivity {
-    private GlobalVariable var;
-    private ListView listView;
-    private ListViewMoviesAdapter adapter;
+
     private ArrayList<Movie> movieArrList;
-    private MoviesData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        var = new GlobalVariable();
 
-        listView = findViewById(R.id.list_movies);
-        adapter = new ListViewMoviesAdapter(getApplicationContext());
-        data = new MoviesData(getApplicationContext());
+        ListView listView = findViewById(R.id.list_movies);
+        ListViewMoviesAdapter adapter = new ListViewMoviesAdapter(getApplicationContext());
+        MoviesData data = new MoviesData(getApplicationContext());
         listView.setAdapter(adapter);
 
         movieArrList = new ArrayList<>();
@@ -59,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
                     movie.setNextTitle3(movieArrList.get(0).getTitle());
 
                     movie.setNextImage1(movieArrList.get(i + 1).getImage());
-                    movie.setNextImage2(movieArrList.get(i + 1).getImage());
+                    movie.setNextImage2(movieArrList.get(i + 2).getImage());
                     movie.setNextImage3(movieArrList.get(0).getImage());
                 } else if (i == (len - 1)) {
                     movie.setNextTitle1(movieArrList.get(i + 1).getTitle());
                     movie.setNextTitle2(movieArrList.get(0).getTitle());
                     movie.setNextTitle3(movieArrList.get(1).getTitle());
+					
                     movie.setNextImage1(movieArrList.get(i + 1).getImage());
                     movie.setNextImage2(movieArrList.get(0).getImage());
                     movie.setNextImage3(movieArrList.get(1).getImage());
@@ -72,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     movie.setNextTitle1(movieArrList.get(0).getTitle());
                     movie.setNextTitle2(movieArrList.get(1).getTitle());
                     movie.setNextTitle3(movieArrList.get(2).getTitle());
+					
                     movie.setNextImage1(movieArrList.get(0).getImage());
                     movie.setNextImage2(movieArrList.get(1).getImage());
                     movie.setNextImage3(movieArrList.get(2).getImage());
@@ -82,11 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
                     movie.setNextImage1(movieArrList.get(i + 1).getImage());
                     movie.setNextImage2(movieArrList.get(i + 2).getImage());
-                    movie.setNextImage3(movieArrList.get(1 + 3).getImage());
+                    movie.setNextImage3(movieArrList.get(i + 3).getImage());
                 }
 
                 Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
-                intent.putExtra(var.EX_MOVIE, movie);
+                intent.putExtra(GlobVar.EX_MOVIE, movie);
                 startActivity(intent);
             }
         });

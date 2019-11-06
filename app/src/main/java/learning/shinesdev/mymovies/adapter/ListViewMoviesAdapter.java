@@ -56,23 +56,23 @@ public class ListViewMoviesAdapter extends BaseAdapter {
     }
 
     private class ViewHolder {
-        private TextView txtNumber;
-        private TextView txtTitle;
-        private TextView txtYear;
-        private TextView txtAgeGroup;
-        private TextView txtDuration;
-        private TextView txtRate;
-        private TextView txtMetascore;
-        private TextView txtSynopnsis;
-        private TextView txtDirector;
-        private TextView txtStars;
-        private TextView txtVotes;
-        private TextView txtGross;
+        private final TextView txtTitle;
+        private final TextView txtYear;
+        private final TextView txtAgeGroup;
+        private final TextView txtDuration;
+        private final TextView txtRate;
+        private final TextView txtMetascore;
+        private final TextView txtSynopnsis;
+        private final TextView txtDirector;
+        private final TextView txtStars;
+        private final TextView txtVotes;
+        private final TextView txtGross;
 
-        private ImageView imgThumb;
+        private final ImageView imgThumb;
 
+        @SuppressWarnings("unused")
         ViewHolder(View view) {
-            txtNumber = view.findViewById(R.id.txt_movie_number);
+            TextView txtNumber = view.findViewById(R.id.txt_movie_number);
             txtTitle = view.findViewById(R.id.txt_movie_title);
             txtYear = view.findViewById(R.id.txt_movie_year);
             txtAgeGroup = view.findViewById(R.id.txt_movie_age_group);

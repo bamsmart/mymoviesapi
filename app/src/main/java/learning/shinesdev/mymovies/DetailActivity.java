@@ -7,10 +7,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import learning.shinesdev.mymovies.model.Movie;
-import learning.shinesdev.mymovies.utils.GlobalVariable;
+import learning.shinesdev.mymovies.utils.GlobVar;
 
 public class DetailActivity extends AppCompatActivity {
-    private GlobalVariable var;
     private TextView txtTitle;
     private TextView txtNextTitle1;
     private TextView txtNextTitle2;
@@ -30,8 +29,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        var = new GlobalVariable();
-
         txtTitle = findViewById(R.id.txt_movie_title);
         txtNextTitle1 = findViewById(R.id.txt_movie_title_1);
         txtNextTitle2 = findViewById(R.id.txt_movie_title_2);
@@ -49,8 +46,8 @@ public class DetailActivity extends AppCompatActivity {
         loadData();
     }
 
-    void loadData() {
-        Movie movie = getIntent().getParcelableExtra(var.EX_MOVIE);
+    private void loadData() {
+        Movie movie = getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
         txtTitle.setText(movie.getTitle());
         txtNextTitle1.setText(movie.getNextTitle1());
         txtNextTitle2.setText(movie.getNextTitle2());

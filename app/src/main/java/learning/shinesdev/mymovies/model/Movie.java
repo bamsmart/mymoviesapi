@@ -72,8 +72,6 @@ public class Movie implements Parcelable {
         this.image = image;
     }
 
-
-
     public String getTitle() {
         return title;
     }
@@ -104,10 +102,6 @@ public class Movie implements Parcelable {
 
     public void setDuration(String duration) {
         this.duration = duration;
-    }
-
-    public String getGenre() {
-        return genre;
     }
 
     public void setGenre(String genre) {
