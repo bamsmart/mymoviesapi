@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">My Movies</string>
+    <string name="app_name">My Movies 2</string>
+    <string name="tab_text_1">Movies</string>
+    <string name="tab_text_2">TV Shows</string>
     <string name="lbl_movie_title">Title</string>
     <string name="lbl_movie_year">Year</string>
     <string name="lbl_movie_metascore">Metascore</string>
@@ -28,6 +30,10 @@
     <string name="_7_5">7.5</string>
     <string name="_85_min">85 min</string>
     <string name="gustav_moiler">Gustav Moiler</string>
+
+
+    <string name="lang_bahasa">Bahasa </string>
+    <string name="lang_english">English </string>
 
 
 </resources>

@@ -1,4 +1,4 @@
-package learning.shinesdev.mymovies;
+package learning.shinesdev.mymovies2;
 
 import org.junit.Test;
 

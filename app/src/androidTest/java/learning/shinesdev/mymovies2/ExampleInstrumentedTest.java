@@ -1,4 +1,4 @@
-package learning.shinesdev.mymovies;
+package learning.shinesdev.mymovies2;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("learning.shinesdev.mymovies", appContext.getPackageName());
+        assertEquals("learning.shinesdev.mymovies2", appContext.getPackageName());
     }
 }

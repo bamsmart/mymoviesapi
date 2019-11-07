@@ -1,4 +1,4 @@
-package learning.shinesdev.mymovies.model;
+package learning.shinesdev.mymovies2.model;
 
 import android.content.Context;
 
@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
-import learning.shinesdev.mymovies.utils.GlobVar;
+import learning.shinesdev.mymovies2.utils.GlobVar;
 
 
 public class MoviesData {
@@ -43,7 +43,6 @@ public class MoviesData {
                 movie.setVotes(obj.getString(GlobVar.EX_MOVIE_VOTES));
                 movie.setGross(obj.getString(GlobVar.EX_MOVIE_GROSS));
                 movie.setImage(obj.getString(GlobVar.EX_MOVIE_THUMB));
-
                 list.add(movie);
             }
         } catch (Exception e) {

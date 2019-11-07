@@ -1,4 +1,4 @@
-package learning.shinesdev.mymovies;
+package learning.shinesdev.mymovies2;
 
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -6,8 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import learning.shinesdev.mymovies.model.Movie;
-import learning.shinesdev.mymovies.utils.GlobVar;
+import learning.shinesdev.mymovies2.model.Movie;
+import learning.shinesdev.mymovies2.utils.GlobVar;
 
 public class DetailActivity extends AppCompatActivity {
     private TextView txtTitle;

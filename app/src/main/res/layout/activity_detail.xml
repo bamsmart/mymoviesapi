@@ -3,20 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DetailActivity">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_height="match_parent"
+        tools:context=".DetailActivity">
 
         <LinearLayout
+            android:id="@+id/layout_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:dividerPadding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -98,10 +102,14 @@
         </LinearLayout>
 
         <HorizontalScrollView
+            android:id="@+id/layout_related_movies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fillViewport="true">
+            android:fillViewport="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_header">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -183,7 +191,7 @@
                     <ImageView
                         android:id="@+id/img_thumb_3"
                         android:layout_width="130dp"
-                        android:layout_height="130dp"
+                        android:layout_height="125dp"
                         android:layout_row="1"
                         android:contentDescription="@string/todo"
                         android:src="@drawable/poster_marrypopins" />
@@ -203,34 +211,43 @@
         </HorizontalScrollView>
 
         <TextView
+            android:id="@+id/lbl_overview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_movie_overview"
             android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_related_movies"/>
 
         <TextView
             android:id="@+id/txt_movie_synopsis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txt_movie_synopsis" />
+            android:text="@string/txt_movie_synopsis"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_overview"
+            />
 
         <TextView
+            android:id="@+id/lbl_movie_votes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_movie_votes"
             android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_synopsis"/>
 
         <TextView
             android:id="@+id/txt_movie_votes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/txt_movie_votes" />
+            android:text="@string/txt_movie_votes"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_votes"/>
 
-    </LinearLayout>
-
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

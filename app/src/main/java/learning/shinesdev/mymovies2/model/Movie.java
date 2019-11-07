@@ -1,4 +1,4 @@
-package learning.shinesdev.mymovies.model;
+package learning.shinesdev.mymovies2.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
