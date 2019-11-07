@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import learning.shinesdev.mymovies2.R;
 
 import java.util.ArrayList;
@@ -19,14 +17,14 @@ import java.util.ArrayList;
 import learning.shinesdev.mymovies2.model.Movie;
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ListViewHolder> {
-    private Context context;
+    private final Context context;
     private OnItemClickCallback onItemClickCallback;
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    private ArrayList<Movie> listMovie;
+    private final ArrayList<Movie> listMovie;
     public ListMovieAdapter(Context context,ArrayList<Movie> list) {
         this.context = context;
         this.listMovie = list;

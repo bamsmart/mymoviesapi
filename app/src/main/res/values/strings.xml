@@ -32,6 +32,9 @@
     <string name="gustav_moiler">Gustav Moiler</string>
 
 
+    <string name="lbl_header_movie_home">My Movies</string>
+    <string name="lbl_header_movie_detail">Movie Detail </string>
+
     <string name="lang_bahasa">Bahasa </string>
     <string name="lang_english">English </string>
 

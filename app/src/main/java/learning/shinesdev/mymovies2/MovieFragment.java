@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,8 +23,7 @@ import learning.shinesdev.mymovies2.utils.GlobVar;
 public class MovieFragment extends Fragment {
 
     private RecyclerView rvMovies;
-    private ArrayList<Movie> list = new ArrayList<>();
-    MoviesData data;
+    private final ArrayList<Movie> list = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public class MovieFragment extends Fragment {
         rvMovies = view.findViewById(R.id.rv_movies);
         rvMovies.setHasFixedSize(true);
 
-       data = new MoviesData(getContext());
+        MoviesData data = new MoviesData(getContext());
        list.addAll(data.getListData());
         showRecyclerList();
     }

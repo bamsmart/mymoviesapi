@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Objects;
+
 import learning.shinesdev.mymovies2.model.Movie;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
@@ -28,6 +30,9 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+       Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
+        getSupportActionBar().setTitle(R.string.lbl_header_movie_detail);
 
         txtTitle = findViewById(R.id.txt_movie_title);
         txtNextTitle1 = findViewById(R.id.txt_movie_title_1);

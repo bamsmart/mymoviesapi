@@ -13,6 +13,7 @@ import learning.shinesdev.mymovies2.MovieFragment;
 import learning.shinesdev.mymovies2.R;
 import learning.shinesdev.mymovies2.TVShowFragment;
 
+@SuppressWarnings("ConstantConditions")
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     private final Context mContext;
@@ -28,8 +29,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             R.string.tab_text_2
     };
 
+   // @Nullable
     @NonNull
-    @Override
     public Fragment getItem(int position) {
         Fragment fragment = null;
         switch (position) {
@@ -49,7 +50,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     }
 
     @Nullable
-    @Override
     public CharSequence getPageTitle(int position) {
         return mContext.getResources().getString(TAB_TITLES[position]);
     }

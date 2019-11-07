@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
 
+@SuppressWarnings("ResultOfMethodCallIgnored")
 public class MoviesData {
     private final Context context;
 
