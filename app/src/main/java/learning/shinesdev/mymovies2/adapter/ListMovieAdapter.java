@@ -12,13 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import learning.shinesdev.mymovies2.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import learning.shinesdev.mymovies2.model.Movie;
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ListViewHolder> {
     private final Context context;
     private OnItemClickCallback onItemClickCallback;
+
+    SimpleDateFormat format = new SimpleDateFormat("yyyy");
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
@@ -42,7 +47,12 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
         Movie movie = listMovie.get(position);
 
         holder.txtTitle.setText(movie.getTitle());
-        holder.txtYear.setText(movie.getYear());
+        try {
+            Date date = format.parse(movie.getYear());
+            holder.txtYear.setText("("+format.format(date)+")");
+        }catch (Exception e){
+            holder.txtYear.setText("("+movie.getYear());
+        }
         holder.txtAgeGroup.setText(movie.getGroup());
         holder.txtDuration.setText(movie.getDuration());
         holder.txtRate.setText(movie.getRating());
@@ -54,7 +64,9 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
         holder.txtGross.setText(movie.getGross());
         holder.imgThumb.setImageResource(context.getResources().getIdentifier(movie.getImage(), "drawable", context.getPackageName()));
 
-        if (position == (getItemCount() - 2)) {
+
+        int len = (getItemCount() - 1);
+        if (position == (len - 2)) {
             movie.setNextTitle1(listMovie.get(position + 1).getTitle());
             movie.setNextTitle2(listMovie.get(position + 2).getTitle());
             movie.setNextTitle3(listMovie.get(0).getTitle());
@@ -63,7 +75,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
             movie.setNextImage2(listMovie.get(position + 2).getImage());
             movie.setNextImage3(listMovie.get(0).getImage());
 
-        } else if (position == (getItemCount() - 1)) {
+        } else if (position == (len - 1)) {
             movie.setNextTitle1(listMovie.get(position + 1).getTitle());
             movie.setNextTitle2(listMovie.get(0).getTitle());
             movie.setNextTitle3(listMovie.get(1).getTitle());
@@ -72,7 +84,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
             movie.setNextImage2(listMovie.get(0).getImage());
             movie.setNextImage3(listMovie.get(1).getImage());
 
-        } else if (position == (getItemCount())) {
+        } else if (position == (len)) {
 
             movie.setNextTitle1(listMovie.get(0).getTitle());
             movie.setNextTitle2(listMovie.get(1).getTitle());

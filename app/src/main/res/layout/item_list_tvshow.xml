@@ -7,9 +7,9 @@
     android:padding="@dimen/activity_vertical_margin">
 
     <ImageView
-        android:id="@+id/img_movie_thumb"
-        android:layout_width="120dp"
-        android:layout_height="160dp"
+        android:id="@+id/img_tv_thumb"
+        android:layout_width="140dp"
+        android:layout_height="180dp"
         android:layout_gravity="top"
         android:contentDescription="@string/todo"
         android:foregroundGravity="top"
@@ -20,8 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:layout_gravity="top"
-        android:gravity="top"
         android:paddingStart="@dimen/activity_horizontal_margin"
         android:paddingEnd="@dimen/activity_horizontal_margin">
 
@@ -31,25 +29,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/txt_movie_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                tools:text="1. " />
-
-            <TextView
-                android:id="@+id/txt_movie_title"
+                android:id="@+id/txt_tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:textColor="@color/colorBluePrimaryDark"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                tools:text="@string/lbl_movie_title" />
+                tools:text="@string/lbl_tv_title" />
 
             <TextView
-                android:id="@+id/txt_movie_year"
+                android:id="@+id/txt_tv_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
@@ -63,11 +53,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:textSize="12sp"
             android:showDividers="middle">
 
             <TextView
-                android:id="@+id/txt_movie_age_group"
+                android:id="@+id/txt_tv_age_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/r"
@@ -77,19 +66,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/separator"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:textColor="@color/colorGreyDark"
                 tools:ignore="HardcodedText" />
 
             <TextView
-                android:id="@+id/txt_movie_minutes"
+                android:id="@+id/txt_tv_minutes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:text="@string/_85_min"
-                android:textSize="12sp"
                 android:textColor="@color/colorGreyDark" />
 
             <TextView
@@ -102,9 +86,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:textSize="12sp"
-                android:text="@string/lbl_movie_genre"
+                android:text="@string/lbl_tv_genre"
                 android:textColor="@color/colorGreyDark" />
         </LinearLayout>
 
@@ -123,52 +105,30 @@
                 android:contentDescription="@string/todo" />
 
             <TextView
-                android:id="@+id/txt_movie_rating"
+                android:id="@+id/txt_tv_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_7_5"
-                android:textSize="12sp"
                 android:textColor="@color/colorGreyDarker" />
 
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="3dp"
-                android:contentDescription="@string/txt_movie_votes"
-                android:textSize="12sp"
+                android:contentDescription="@string/lbl_image_desc"
                 android:src="@drawable/silver_star" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_movie_rate"
-                android:textSize="12sp"
+                android:text="@string/lbl_rating"
                 android:textColor="@color/colorGreyDarker" />
 
-            <TextView
-                android:id="@+id/txt_movie_metascore"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="3dp"
-                android:background="@color/colorGreenLight"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
-                android:textSize="12sp"
-                android:text="@string/separator"
-                android:textColor="@color/colorWhite" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_movie_metascore"
-                android:textSize="12sp"
-                android:textColor="@color/colorGreyDarker" />
         </LinearLayout>
 
         <TextView
-            android:id="@+id/txt_movie_sinopsis"
+            android:id="@+id/txt_tv_sinopsis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -179,47 +139,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginTop="5dp">
-
-            <TextView
-                android:id="@+id/lbl_director"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lbl_movie_director"
-                android:textColor="@color/colorGreyDark"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/txt_movie_director"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/lbl_director"
-                android:text="@string/gustav_moiler"
-                android:textColor="@color/colorBluePrimary"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_toEndOf="@+id/txt_movie_director" />
 
             <TextView
                 android:id="@+id/lbl_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_movie_director"
                 android:layout_marginEnd="5dp"
                 android:text="@string/lbl_stars"
                 android:textColor="@color/colorGreyDark"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txt_movie_stars"
+                android:id="@+id/txt_tv_stars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txt_movie_director"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="5dp"
                 android:layout_toEndOf="@+id/lbl_stars"
@@ -238,36 +173,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/votes"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/txt_movie_votes"
+                android:id="@+id/txt_tv_votes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/_31_523"
-                android:layout_marginLeft="3dp"
-                android:textSize="11sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:text="@string/separator" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gross"
-                android:textSize="11sp" />
-
-            <TextView
-                android:id="@+id/txt_movie_gross"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/_0_21m"
-                android:layout_marginLeft="3dp"
-                android:textSize="11sp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

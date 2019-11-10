@@ -37,7 +37,7 @@ public class MovieFragment extends Fragment {
         rvMovies.setHasFixedSize(true);
 
         MoviesData data = new MoviesData(getContext());
-       list.addAll(data.getListData());
+       list.addAll(data.getArrListData());
         showRecyclerList();
     }
 
@@ -56,13 +56,13 @@ public class MovieFragment extends Fragment {
         listMovieAdapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(Movie data) {
-                showSelectedHero(data);
+                showSelectedMovie(data);
             }
         });
     }
 
-    private void showSelectedHero(Movie movie) {
-        Intent intent = new Intent(getContext(), DetailActivity.class);
+    private void showSelectedMovie(Movie movie) {
+        Intent intent = new Intent(getContext(), DetailMovieActivity.class);
         intent.putExtra(GlobVar.EX_MOVIE, movie);
         startActivity(intent);
     }

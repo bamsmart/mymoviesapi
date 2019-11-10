@@ -1,9 +1,13 @@
 package learning.shinesdev.mymovies2;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -42,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.setting:
-            case R.id.lang_english:
-
+                Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+                startActivity(mIntent);
                 break;
         }
 

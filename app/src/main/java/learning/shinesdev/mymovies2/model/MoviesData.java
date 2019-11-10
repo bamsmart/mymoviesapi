@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
+import learning.shinesdev.mymovies2.R;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
 
@@ -17,56 +18,45 @@ import learning.shinesdev.mymovies2.utils.GlobVar;
 public class MoviesData {
     private final Context context;
 
+
     public MoviesData(Context context) {
         this.context = context;
     }
 
-    public ArrayList<Movie> getListData() {
-        ArrayList<Movie> list = new ArrayList<>();
-        try {
-            JSONObject jsonObj = new JSONObject(loadJSONFromAsset());
-            JSONArray jsonArr = jsonObj.getJSONArray(GlobVar.EX_MOVIE_ROOT);
+    public ArrayList<Movie> getArrListData(){
+        ArrayList<Movie> arrList = new ArrayList<>();
+        String [] data_title = context.getResources().getStringArray(R.array.movie_data_title);
+        String [] data_year = context.getResources().getStringArray(R.array.movie_data_releasedate);
+        String [] data_group = context.getResources().getStringArray(R.array.movie_data_group);
+        String [] data_duration = context.getResources().getStringArray(R.array.movie_data_duration);
+        String [] data_genre = context.getResources().getStringArray(R.array.movie_data_genre);
+        String [] data_rating = context.getResources().getStringArray(R.array.movie_data_rating);
+        String [] data_metascore = context.getResources().getStringArray(R.array.movie_data_metascore);
+        String [] data_overview = context.getResources().getStringArray(R.array.movie_data_overview);
+        String [] data_director = context.getResources().getStringArray(R.array.movie_data_director);
+        String [] data_stars = context.getResources().getStringArray(R.array.movie_data_stars);
+        String [] data_votes = context.getResources().getStringArray(R.array.movie_data_votes);
+        String [] data_gross = context.getResources().getStringArray(R.array.movie_data_gross);
+        String [] data_image = context.getResources().getStringArray(R.array.movie_data_poster);
 
-            for (int i = 0; i < jsonArr.length(); i++) {
-                JSONObject obj = jsonArr.getJSONObject(i);
+        for(int i = 0 ; i < data_title.length; i++){
+            Movie movie = new Movie();
+            movie.setTitle(data_title[i]);
+            movie.setYear(data_year[i]);
+            movie.setGroup(data_group[i]);
+            movie.setDuration(data_duration[i]);
+            movie.setGenre(data_genre[i]);
+            movie.setRating(data_rating[i]);
+            movie.setMetascore(data_metascore[i]);
+            movie.setSynopsis(data_overview[i]);
+            movie.setDirector(data_director[i]);
+            movie.setStars(data_stars[i]);
+            movie.setVotes(data_votes[i]);
+            movie.setGross(data_gross[i]);
+            movie.setImage(data_image[i]);
 
-                Movie movie = new Movie();
-                movie.setTitle(obj.getString(GlobVar.EX_MOVIE_TITLE));
-                movie.setYear(obj.getString(GlobVar.EX_MOVIE_YEAR));
-                movie.setGroup(obj.getString(GlobVar.EX_MOVIE_GROUP));
-                movie.setDuration(obj.getString(GlobVar.EX_MOVIE_DURATION));
-                movie.setGenre(obj.getString(GlobVar.EX_MOVIE_GENRE));
-                movie.setRating(obj.getString(GlobVar.EX_MOVIE_RATING));
-                movie.setMetascore(obj.getString(GlobVar.EX_MOVIE_METASCORE));
-                movie.setSynopsis(obj.getString(GlobVar.EX_MOVIE_SYNOPSIS));
-                movie.setDirector(obj.getString(GlobVar.EX_MOVIE_DIRECTOR));
-                movie.setStars(obj.getString(GlobVar.EX_MOVIE_STARS));
-                movie.setVotes(obj.getString(GlobVar.EX_MOVIE_VOTES));
-                movie.setGross(obj.getString(GlobVar.EX_MOVIE_GROSS));
-                movie.setImage(obj.getString(GlobVar.EX_MOVIE_THUMB));
-                list.add(movie);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            arrList.add(movie);
         }
-        return list;
-    }
-
-
-    private String loadJSONFromAsset() {
-        String json;
-        try {
-            InputStream is = context.getAssets().open("movie.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
+        return arrList;
     }
 }

@@ -11,7 +11,7 @@ import java.util.Objects;
 import learning.shinesdev.mymovies2.model.Movie;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
-public class DetailActivity extends AppCompatActivity {
+public class DetailMovieActivity extends AppCompatActivity {
     private TextView txtTitle;
     private TextView txtNextTitle1;
     private TextView txtNextTitle2;
