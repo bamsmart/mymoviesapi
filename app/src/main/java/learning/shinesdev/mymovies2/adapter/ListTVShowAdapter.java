@@ -99,13 +99,13 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickCallback.onItemClicked(listTVShow.get(holder.getAdapterPosition()));
+                onItemClickCallback.onItemClicked(listTVShow.get(holder.getAdapterPosition()),holder.getAdapterPosition());
             }
         });
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(TV data);
+        void onItemClicked(TV data,int idx);
     }
 
     @Override

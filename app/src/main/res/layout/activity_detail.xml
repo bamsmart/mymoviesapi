@@ -43,47 +43,32 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lbl_movie_title"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
+                    style="@style/TextContent.Title"
+                    android:text="@string/lbl_movie_title"/>
 
                 <TextView
                     android:id="@+id/txt_movie_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:text="@string/txt_movie_title"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
+                    style="@style/TextContent.SubTitle"/>
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:text="@string/lbl_movie_year"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
+                    style="@style/TextContent.Title"
+                    android:text="@string/lbl_movie_year" />
 
                 <TextView
                     android:id="@+id/txt_movie_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_movie_title" />
+                    android:text="@string/txt_movie_title"
+                    style="@style/TextContent.SubTitle"/>
 
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="@string/lbl_movie_director"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
+                    style="@style/TextContent.Title"/>
 
                 <TextView
                     android:id="@+id/txt_movie_director"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextContent.SubTitle"
                     android:text="@string/txt_movie_director" />
 
                 <TextView
@@ -96,8 +81,7 @@
 
                 <TextView
                     android:id="@+id/txt_movie_stars"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    style="@style/TextContent.SubTitle"
                     android:text="@string/txt_movie_stars" />
             </LinearLayout>
         </LinearLayout>
@@ -142,15 +126,13 @@
 
                     <TextView
                         android:id="@+id/txt_movie_title_1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/LabelContent.Title"
                         android:layout_row="2"
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:maxEms="7"
                         android:maxLines="1"
-                        android:text="@string/lbl_movie_title"
-                        android:textStyle="bold" />
+                        android:text="@string/lbl_movie_title" />
                 </GridLayout>
 
                 <GridLayout
@@ -171,15 +153,13 @@
 
                     <TextView
                         android:id="@+id/txt_movie_title_2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/LabelContent.Title"
                         android:layout_row="2"
                         android:foregroundGravity="center"
                         android:gravity="center"
                         android:maxEms="7"
                         android:maxLines="1"
-                        android:text="@string/lbl_movie_title"
-                        android:textStyle="bold" />
+                        android:text="@string/lbl_movie_title"/>
 
                 </GridLayout>
 
@@ -201,60 +181,50 @@
 
                     <TextView
                         android:id="@+id/txt_movie_title_3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/LabelContent.Title"
                         android:layout_row="2"
                         android:gravity="center"
                         android:maxEms="7"
                         android:maxLines="1"
-                        android:text="@string/lbl_movie_title"
-                        android:textStyle="bold" />
+                        android:text="@string/lbl_movie_title"/>
                 </GridLayout>
             </LinearLayout>
         </HorizontalScrollView>
 
         <TextView
             android:id="@+id/lbl_overview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/lbl_movie_overview"
-            android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold"
             android:layout_marginStart="5dp"
+            android:text="@string/lbl_movie_overview"
+            style="@style/TextContent.Title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/layout_related_movies"/>
 
         <TextView
             android:id="@+id/txt_movie_synopsis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/txt_movie_synopsis"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_overview"
+            style="@style/TextContent.Field.GreyDark"
             />
 
         <TextView
             android:id="@+id/lbl_movie_votes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_movie_votes"
             android:layout_marginStart="5dp"
-            android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold"
+            style="@style/TextContent.Title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_movie_synopsis"/>
 
         <TextView
             android:id="@+id/txt_movie_votes"
-            android:layout_width="18dp"
-            android:layout_height="22dp"
             android:layout_marginStart="5dp"
             android:text="@string/txt_movie_votes"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_votes" />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_votes"
+            style="@style/TextContent.Field.GreyDark"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

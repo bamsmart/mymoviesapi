@@ -5,6 +5,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import java.util.Objects;
 
@@ -33,6 +35,9 @@ public class DetailMovieActivity extends AppCompatActivity {
 
        Objects.requireNonNull(getSupportActionBar()).setHomeButtonEnabled(true);
         getSupportActionBar().setTitle(R.string.lbl_header_movie_detail);
+
+
+
 
         txtTitle = findViewById(R.id.txt_movie_title);
         txtNextTitle1 = findViewById(R.id.txt_movie_title_1);

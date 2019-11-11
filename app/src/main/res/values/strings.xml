@@ -28,7 +28,6 @@
     <string name="txt_movie_year">2018</string>
 
 
-
     <string name="description">description</string>
     <string name="separator"> | </string>
     <string name="lbl_stars">Stars : </string>
@@ -50,6 +49,7 @@
     <string name="lbl_rating">Rating</string>
     <string name="lang_bahasa">Bahasa </string>
     <string name="lang_english">English </string>
+    <string name="title">Title</string>
 
     <string-array name="movie_data_title">
         <item>Avengers: Infinity War</item>
@@ -566,5 +566,8 @@
         <item>Animation, Action, Adventure | TV Series</item>
         <item>Documentary, Music | TV Mini-Series</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

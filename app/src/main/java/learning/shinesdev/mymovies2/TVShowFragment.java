@@ -36,7 +36,6 @@ public class TVShowFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,14 +61,15 @@ public class TVShowFragment extends Fragment {
 
         listAdapter.setOnItemClickCallback(new ListTVShowAdapter.OnItemClickCallback() {
             @Override
-            public void onItemClicked(TV data) {
-                showSelectedTVShow(data);
+            public void onItemClicked(TV data,int idx) {
+                showSelectedTVShow(data,idx);
             }
         });
     }
 
-    private void showSelectedTVShow(TV tv) {
+    private void showSelectedTVShow(TV tv,int idx) {
         Intent intent = new Intent(getContext(), DetailTVActivity.class);
+        intent.putExtra(GlobVar.EX_TV, tv);
         intent.putExtra(GlobVar.EX_TV, tv);
         startActivity(intent);
     }

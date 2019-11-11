@@ -59,4 +59,9 @@ public class MoviesData {
         }
         return arrList;
     }
+
+    public int getCount(){
+        String [] data_title = context.getResources().getStringArray(R.array.movie_data_title);
+        return data_title.length;
+    }
 }
