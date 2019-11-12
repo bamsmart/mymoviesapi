@@ -4,19 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailMovieActivity">
+    tools:context=".DetailTVShowActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/lbl_year"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_year"
-        tools:context=".DetailMovieActivity">
+        app:layout_constraintTop_toBottomOf="@+id/lbl_year">
 
         <ImageView
             android:id="@+id/img_tv_thumb"
-            android:layout_width="220dp"
-            android:layout_height="200dp"
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
             android:contentDescription="@string/todo"
             android:src="@drawable/poster_avengerinfinity"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,6 +96,7 @@
             android:id="@+id/txt_tv_stars"
             style="@style/TextContent.SubTitle"
             android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:scaleType="fitStart"
@@ -115,24 +117,21 @@
             tools:listitem="@layout/item_list_detail_random"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_tv_stars"/>
+            app:layout_constraintTop_toBottomOf="@+id/img_tv_thumb"/>
 
         <TextView
             android:id="@+id/lbl_overview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+           style="@style/TextContent.Title"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
             android:text="@string/lbl_tv_overview"
-            android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold"
-            android:layout_marginStart="5dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rv_detail_tv"/>
 
         <TextView
             android:id="@+id/txt_tv_synopsis"
             style="@style/TextContent.SubTitle"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:text="@string/txt_movie_synopsis"
             app:layout_constraintStart_toStartOf="parent"
@@ -143,14 +142,14 @@
             style="@style/TextContent.Title"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_tv_votes"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_tv_synopsis"/>
 
         <TextView
             android:id="@+id/txt_tv_votes"
             style="@style/TextContent.SubTitle"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="12dp"
             android:text="@string/txt_movie_votes"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lbl_tv_votes" />

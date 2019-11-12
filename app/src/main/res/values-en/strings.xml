@@ -11,6 +11,7 @@
     <string name="lbl_movie_director">Director : </string>
     <string name="lbl_movie_stars">Stars</string>
     <string name="lbl_movie_votes">Votes</string>
+    <string name="lbl_movie_gross">Gross</string>
 
     <string name="lbl_tv_title">Title</string>
     <string name="lbl_tv_year">Year</string>

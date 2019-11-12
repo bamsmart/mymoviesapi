@@ -28,6 +28,7 @@ import learning.shinesdev.mymovies2.utils.GlobVar;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressWarnings("ALL")
 public class DetailMovieFragment extends Fragment {
 
     public DetailMovieFragment() {
@@ -41,9 +42,10 @@ public class DetailMovieFragment extends Fragment {
         TextView txtTitle = view.findViewById(R.id.txt_movie_title);
         TextView txtYear = view.findViewById(R.id.txt_movie_year);
         TextView txtSynopnsis = view.findViewById(R.id.txt_movie_synopsis);
-        @SuppressWarnings("unused") TextView txtDirector = view.findViewById(R.id.txt_movie_director);
+        TextView txtDirector = view.findViewById(R.id.txt_movie_director);
         TextView txtStars = view.findViewById(R.id.txt_movie_stars);
         TextView txtVotes = view.findViewById(R.id.txt_movie_votes);
+        TextView txtGross = view.findViewById(R.id.txt_movie_gross);
         ImageView imgThumb = view.findViewById(R.id.img_movie_thumb);
         RecyclerView randMovieRecyclerView = view.findViewById(R.id.rv_detail_movie);
 
@@ -52,8 +54,10 @@ public class DetailMovieFragment extends Fragment {
         txtTitle.setText(movieModel.getTitle());
         txtYear.setText(movieModel.getYear());
         txtSynopnsis.setText(movieModel.getSynopsis());
+        txtDirector.setText(movieModel.getDirector());
         txtStars.setText(movieModel.getStars());
         txtVotes.setText(movieModel.getVotes());
+        txtGross.setText(movieModel.getGross());
         imgThumb.setImageResource(getResources().getIdentifier(movieModel.getImage(), "drawable", getActivity().getPackageName()));
 
         MoviesData movieData = new MoviesData(getContext());
@@ -87,8 +91,10 @@ public class DetailMovieFragment extends Fragment {
             txtTitle.setText(Objects.requireNonNull(movieModel).getTitle());
             txtYear.setText(movieModel.getYear());
             txtSynopnsis.setText(movieModel.getSynopsis());
+            txtDirector.setText(movieModel.getDirector());
             txtStars.setText(movieModel.getStars());
             txtVotes.setText(movieModel.getVotes());
+            txtGross.setText(movieModel.getGross());
             imgThumb.setImageResource(getResources().getIdentifier(movieModel.getImage(), "drawable", getActivity().getPackageName()));
         }
     }

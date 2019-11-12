@@ -1,146 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DetailMovieActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".DetailMovieActivity">
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_year"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_year">
 
-        <LinearLayout
-            android:id="@+id/layout_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:dividerPadding="5dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.4">
-
-                <ImageView
-                    android:id="@+id/img_movie_thumb"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/poster_avengerinfinity" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/TextContent.Title"
-                    android:text="@string/lbl_movie_title"/>
-
-                <TextView
-                    android:id="@+id/txt_movie_title"
-                    android:text="@string/txt_movie_title"
-                    style="@style/TextContent.SubTitle"/>
-                <TextView
-                    android:layout_marginTop="5dp"
-                    style="@style/TextContent.Title"
-                    android:text="@string/lbl_movie_year" />
-
-                <TextView
-                    android:id="@+id/txt_movie_year"
-                    android:text="@string/txt_movie_title"
-                    style="@style/TextContent.SubTitle"/>
-
-
-                <TextView
-                    android:layout_marginTop="5dp"
-                    android:text="@string/lbl_movie_director"
-                    style="@style/TextContent.Title"/>
-
-                <TextView
-                    android:id="@+id/txt_movie_director"
-                    style="@style/TextContent.SubTitle"
-                    android:text="@string/txt_movie_director" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/lbl_movie_stars"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_movie_stars"
-                    style="@style/TextContent.SubTitle"
-                    android:text="@string/txt_movie_stars" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/layout_related_movies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fillViewport="true"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+        <ImageView
+            android:id="@+id/img_movie_thumb"
+            android:layout_width="150dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/poster_avengerinfinity"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_header">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_detail_movie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_list_detail_random" />
-        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/lbl_title"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/lbl_movie_title"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toTopOf="@+id/img_movie_thumb"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_movie_title"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/txt_movie_title"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lbl_year"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_movie_year"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_movie_year"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/txt_movie_year"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_year"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lbl_movie_director"
+            android:layout_width="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/lbl_movie_director"
+            style="@style/TextContent.Title"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_year"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_movie_director"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            style="@style/TextContent.SubTitle"
+            android:text="@string/txt_movie_director"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_director"
+            app:layout_constraintVertical_bias="0.0"/>
+
+
+        <TextView
+            android:id="@+id/lbl_star"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_movie_stars"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_director"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_movie_stars"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:scaleType="fitStart"
+            android:text="@string/txt_movie_stars"
+            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintRight_toRightOf="@id/img_movie_thumb"
+            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_star"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_movie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_movie_thumb"
+            tools:listitem="@layout/item_list_detail_random" />
 
         <TextView
             android:id="@+id/lbl_overview"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="5dp"
-            android:text="@string/lbl_movie_overview"
             style="@style/TextContent.Title"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="12dp"
+            android:text="@string/lbl_movie_overview"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_related_movies"/>
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_movie"/>
 
         <TextView
             android:id="@+id/txt_movie_synopsis"
-            android:layout_marginStart="5dp"
+            style="@style/TextContent.SubTitle"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
             android:text="@string/txt_movie_synopsis"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_overview"
-            style="@style/TextContent.Field.GreyDark"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_overview" />
 
         <TextView
             android:id="@+id/lbl_movie_votes"
+            style="@style/TextContent.Title"
+            android:layout_width="150dp"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_movie_votes"
-            android:layout_marginStart="5dp"
-            style="@style/TextContent.Title"
+            android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_movie_synopsis"/>
 
         <TextView
             android:id="@+id/txt_movie_votes"
-            android:layout_marginStart="5dp"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="150dp"
+            android:layout_marginStart="8dp"
             android:text="@string/txt_movie_votes"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_votes"
-            style="@style/TextContent.Field.GreyDark"/>
+            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_votes" />
+
+        <TextView
+            android:id="@+id/lbl_movie_gross"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/lbl_movie_gross"
+            app:layout_constraintBottom_toBottomOf="@+id/lbl_movie_votes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintRight_toRightOf="@id/lbl_movie_votes"
+            app:layout_constraintStart_toEndOf="@+id/lbl_movie_votes"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_synopsis"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_movie_gross"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/lbl_movie_gross"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_movie_votes"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintRight_toRightOf="@id/txt_movie_votes"
+            app:layout_constraintStart_toEndOf="@+id/txt_movie_votes"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_gross"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

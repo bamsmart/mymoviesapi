@@ -27,6 +27,7 @@ import learning.shinesdev.mymovies2.utils.GlobVar;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressWarnings({"ALL", "WeakerAccess"})
 public class DetailTVShowFragment extends Fragment {
 
     public DetailTVShowFragment() {

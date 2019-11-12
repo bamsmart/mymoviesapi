@@ -11,6 +11,7 @@
     <string name="lbl_movie_director">Direktur</string>
     <string name="lbl_movie_stars">Bintang</string>
     <string name="lbl_movie_votes">Suara</string>
+    <string name="lbl_movie_gross">Pendapatan</string>
 
     <string name="lbl_tv_title">Judul</string>
     <string name="lbl_tv_year">Tahun</string>
