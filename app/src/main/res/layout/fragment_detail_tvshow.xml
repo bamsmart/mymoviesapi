@@ -1,112 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DetailMovieActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lbl_year"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_year"
         tools:context=".DetailMovieActivity">
 
-        <LinearLayout
-            android:id="@+id/layout_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:dividerPadding="5dp"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.4">
-
-                <ImageView
-                    android:id="@+id/img_tv_thumb"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:contentDescription="@string/todo"
-                    android:src="@drawable/poster_avengerinfinity" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lbl_tv_title"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_tv_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_movie_title"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/lbl_tv_year"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_tv_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_movie_year" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/lbl_tv_stars"
-                    android:textColor="@color/colorBluePrimaryDark"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_tv_stars"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/txt_movie_stars" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <HorizontalScrollView
-            android:id="@+id/layout_related_movies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:fillViewport="true"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+        <ImageView
+            android:id="@+id/img_tv_thumb"
+            android:layout_width="220dp"
+            android:layout_height="200dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/poster_avengerinfinity"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_header">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_detail_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_list_detail_random" />
-        </HorizontalScrollView>
+        <TextView
+            android:id="@+id/lbl_title"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:text="@string/lbl_tv_title"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toTopOf="@+id/img_tv_thumb"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_tv_title"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/txt_movie_title"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lbl_year"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_tv_year"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tv_title"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_tv_year"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/txt_movie_year"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_year"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/lbl_star"
+            style="@style/TextContent.Title"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/lbl_tv_stars"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tv_year"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txt_tv_stars"
+            style="@style/TextContent.SubTitle"
+            android:layout_width="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitStart"
+            android:text="@string/txt_movie_stars"
+            app:layout_constraintBottom_toBottomOf="@+id/img_tv_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.05"
+            app:layout_constraintRight_toRightOf="@id/img_tv_thumb"
+            app:layout_constraintStart_toEndOf="@+id/img_tv_thumb"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_star"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_tv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:listitem="@layout/item_list_detail_random"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_tv_stars"/>
 
         <TextView
             android:id="@+id/lbl_overview"
@@ -118,27 +127,23 @@
             android:textStyle="bold"
             android:layout_marginStart="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_related_movies"/>
+            app:layout_constraintTop_toBottomOf="@+id/rv_detail_tv"/>
 
         <TextView
             android:id="@+id/txt_tv_synopsis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextContent.SubTitle"
             android:layout_marginStart="5dp"
+            android:layout_marginTop="4dp"
             android:text="@string/txt_movie_synopsis"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_overview"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/lbl_overview" />
 
         <TextView
             android:id="@+id/lbl_tv_votes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/TextContent.Title"
             android:layout_marginTop="10dp"
             android:text="@string/lbl_tv_votes"
             android:layout_marginStart="5dp"
-            android:textColor="@color/colorBluePrimaryDark"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_tv_synopsis"/>
 

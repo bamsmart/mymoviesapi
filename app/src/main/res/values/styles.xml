@@ -25,6 +25,7 @@
     <style name="TextContent.Title">
         <item name="android:textColor">@color/colorBluePrimaryDark</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextContent.SubTitle">
