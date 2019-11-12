@@ -16,14 +16,14 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import learning.shinesdev.mymovies2.adapter.ListMovieAdapter;
-import learning.shinesdev.mymovies2.model.Movie;
+import learning.shinesdev.mymovies2.model.MovieModel;
 import learning.shinesdev.mymovies2.model.MoviesData;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
 public class MovieFragment extends Fragment {
 
     private RecyclerView rvMovies;
-    private final ArrayList<Movie> list = new ArrayList<>();
+    private final ArrayList<MovieModel> list = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,15 +55,16 @@ public class MovieFragment extends Fragment {
 
         listMovieAdapter.setOnItemClickCallback(new ListMovieAdapter.OnItemClickCallback() {
             @Override
-            public void onItemClicked(Movie data) {
-                showSelectedMovie(data);
+            public void onItemClicked(MovieModel data, int idx) {
+                showSelectedMovie(data,idx);
             }
         });
     }
 
-    private void showSelectedMovie(Movie movie) {
+    private void showSelectedMovie(MovieModel movie,int idx) {
         Intent intent = new Intent(getContext(), DetailMovieActivity.class);
         intent.putExtra(GlobVar.EX_MOVIE, movie);
+        intent.putExtra(GlobVar.EX_IDX, idx);
         startActivity(intent);
     }
 }

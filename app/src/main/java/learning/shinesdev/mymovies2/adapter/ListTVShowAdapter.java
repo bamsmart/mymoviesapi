@@ -1,7 +1,6 @@
 package learning.shinesdev.mymovies2.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 import learning.shinesdev.mymovies2.R;
-import learning.shinesdev.mymovies2.model.Movie;
-import learning.shinesdev.mymovies2.model.TV;
+import learning.shinesdev.mymovies2.model.TVShowModel;
 
 public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.ListViewHolder> {
     private final Context context;
@@ -27,9 +23,9 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    private final ArrayList<TV> listTVShow;
+    private final ArrayList<TVShowModel> listTVShow;
 
-    public ListTVShowAdapter(Context context, ArrayList<TV> list) {
+    public ListTVShowAdapter(Context context, ArrayList<TVShowModel> list) {
         this.context = context;
         this.listTVShow = list;
     }
@@ -43,7 +39,7 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
 
     @Override
     public void onBindViewHolder(@NonNull final ListTVShowAdapter.ListViewHolder holder, int position) {
-        TV tvshow = listTVShow.get(position);
+        TVShowModel tvshow = listTVShow.get(position);
 
         holder.txtTitle.setText(tvshow.getTitle());
         holder.txtYear.setText("("+tvshow.getYear());
@@ -53,47 +49,10 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
         holder.txtOverview.setText(tvshow.getSynopsis());
         holder.txtStars.setText(tvshow.getStars());
         holder.txtVotes.setText(tvshow.getVotes());
-
         try{
             holder.imgThumb.setImageResource(context.getResources().getIdentifier(tvshow.getImage(), "drawable", context.getPackageName()));
         }catch (Exception e){
             e.printStackTrace();
-        }
-        int len = (getItemCount() - 1);
-        if (position == (len - 2)) {
-            tvshow.setNextTitle1(listTVShow.get(position + 1).getTitle());
-            tvshow.setNextTitle2(listTVShow.get(position + 2).getTitle());
-            tvshow.setNextTitle3(listTVShow.get(0).getTitle());
-
-            tvshow.setNextImage1(listTVShow.get(position + 1).getImage());
-            tvshow.setNextImage2(listTVShow.get(position + 2).getImage());
-            tvshow.setNextImage3(listTVShow.get(0).getImage());
-
-        } else if (position == (len - 1)) {
-            tvshow.setNextTitle1(listTVShow.get(position + 1).getTitle());
-            tvshow.setNextTitle2(listTVShow.get(0).getTitle());
-            tvshow.setNextTitle3(listTVShow.get(1).getTitle());
-
-            tvshow.setNextImage1(listTVShow.get(position + 1).getImage());
-            tvshow.setNextImage2(listTVShow.get(0).getImage());
-            tvshow.setNextImage3(listTVShow.get(1).getImage());
-
-        } else if (position == (len)) {
-
-            tvshow.setNextTitle1(listTVShow.get(0).getTitle());
-            tvshow.setNextTitle2(listTVShow.get(1).getTitle());
-            tvshow.setNextTitle3(listTVShow.get(2).getTitle());
-
-            tvshow.setNextImage1(listTVShow.get(0).getImage());
-            tvshow.setNextImage2(listTVShow.get(1).getImage());
-            tvshow.setNextImage3(listTVShow.get(2).getImage());
-        } else {
-            tvshow.setNextTitle2(listTVShow.get(position + 2).getTitle());
-            tvshow.setNextTitle3(listTVShow.get(position + 3).getTitle());
-
-            tvshow.setNextImage1(listTVShow.get(position + 1).getImage());
-            tvshow.setNextImage2(listTVShow.get(position + 2).getImage());
-            tvshow.setNextImage3(listTVShow.get(position + 3).getImage());
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -105,7 +64,7 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(TV data,int idx);
+        void onItemClicked(TVShowModel data, int idx);
     }
 
     @Override

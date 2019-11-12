@@ -16,12 +16,9 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import learning.shinesdev.mymovies2.adapter.ListMovieAdapter;
 import learning.shinesdev.mymovies2.adapter.ListTVShowAdapter;
-import learning.shinesdev.mymovies2.model.Movie;
-import learning.shinesdev.mymovies2.model.MoviesData;
-import learning.shinesdev.mymovies2.model.TV;
-import learning.shinesdev.mymovies2.model.TVData;
+import learning.shinesdev.mymovies2.model.TVShowModel;
+import learning.shinesdev.mymovies2.model.TVShowData;
 import learning.shinesdev.mymovies2.utils.GlobVar;
 
 
@@ -30,7 +27,7 @@ import learning.shinesdev.mymovies2.utils.GlobVar;
  */
 public class TVShowFragment extends Fragment {
     private RecyclerView rvTVShow;
-    private final ArrayList<TV> list = new ArrayList<>();
+    private final ArrayList<TVShowModel> list = new ArrayList<>();
 
     public TVShowFragment() {
         // Required empty public constructor
@@ -49,7 +46,7 @@ public class TVShowFragment extends Fragment {
         rvTVShow = view.findViewById(R.id.rv_tvshow);
         rvTVShow.setHasFixedSize(true);
 
-        TVData data = new TVData(getContext());
+        TVShowData data = new TVShowData(getContext());
         list.addAll(data.getArrListData());
         showRecyclerList();
     }
@@ -61,16 +58,16 @@ public class TVShowFragment extends Fragment {
 
         listAdapter.setOnItemClickCallback(new ListTVShowAdapter.OnItemClickCallback() {
             @Override
-            public void onItemClicked(TV data,int idx) {
+            public void onItemClicked(TVShowModel data, int idx) {
                 showSelectedTVShow(data,idx);
             }
         });
     }
 
-    private void showSelectedTVShow(TV tv,int idx) {
-        Intent intent = new Intent(getContext(), DetailTVActivity.class);
+    private void showSelectedTVShow(TVShowModel tv, int idx) {
+        Intent intent = new Intent(getContext(), DetailTVShowActivity.class);
         intent.putExtra(GlobVar.EX_TV, tv);
-        intent.putExtra(GlobVar.EX_TV, tv);
+        intent.putExtra(GlobVar.EX_IDX, idx);
         startActivity(intent);
     }
 }

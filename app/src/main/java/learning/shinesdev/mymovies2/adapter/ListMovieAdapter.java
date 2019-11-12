@@ -1,5 +1,6 @@
 package learning.shinesdev.mymovies2.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,25 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import learning.shinesdev.mymovies2.R;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import learning.shinesdev.mymovies2.model.Movie;
+import learning.shinesdev.mymovies2.model.MovieModel;
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.ListViewHolder> {
     private final Context context;
     private OnItemClickCallback onItemClickCallback;
 
-    SimpleDateFormat format = new SimpleDateFormat("yyyy");
+    @SuppressLint("SimpleDateFormat")
+    private final SimpleDateFormat format = new SimpleDateFormat("yyyy");
 
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    private final ArrayList<Movie> listMovie;
-    public ListMovieAdapter(Context context,ArrayList<Movie> list) {
+    private final ArrayList<MovieModel> listMovie;
+    public ListMovieAdapter(Context context,ArrayList<MovieModel> list) {
         this.context = context;
         this.listMovie = list;
     }
@@ -42,10 +43,10 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
         return new ListViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ListMovieAdapter.ListViewHolder holder, int position) {
-        Movie movie = listMovie.get(position);
-
+        MovieModel movie = listMovie.get(position);
         holder.txtTitle.setText(movie.getTitle());
         try {
             Date date = format.parse(movie.getYear());
@@ -64,55 +65,16 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
         holder.txtGross.setText(movie.getGross());
         holder.imgThumb.setImageResource(context.getResources().getIdentifier(movie.getImage(), "drawable", context.getPackageName()));
 
-
-        int len = (getItemCount() - 1);
-        if (position == (len - 2)) {
-            movie.setNextTitle1(listMovie.get(position + 1).getTitle());
-            movie.setNextTitle2(listMovie.get(position + 2).getTitle());
-            movie.setNextTitle3(listMovie.get(0).getTitle());
-
-            movie.setNextImage1(listMovie.get(position + 1).getImage());
-            movie.setNextImage2(listMovie.get(position + 2).getImage());
-            movie.setNextImage3(listMovie.get(0).getImage());
-
-        } else if (position == (len - 1)) {
-            movie.setNextTitle1(listMovie.get(position + 1).getTitle());
-            movie.setNextTitle2(listMovie.get(0).getTitle());
-            movie.setNextTitle3(listMovie.get(1).getTitle());
-
-            movie.setNextImage1(listMovie.get(position + 1).getImage());
-            movie.setNextImage2(listMovie.get(0).getImage());
-            movie.setNextImage3(listMovie.get(1).getImage());
-
-        } else if (position == (len)) {
-
-            movie.setNextTitle1(listMovie.get(0).getTitle());
-            movie.setNextTitle2(listMovie.get(1).getTitle());
-            movie.setNextTitle3(listMovie.get(2).getTitle());
-
-            movie.setNextImage1(listMovie.get(0).getImage());
-            movie.setNextImage2(listMovie.get(1).getImage());
-            movie.setNextImage3(listMovie.get(2).getImage());
-        } else {
-            movie.setNextTitle1(listMovie.get(position + 1).getTitle());
-            movie.setNextTitle2(listMovie.get(position + 2).getTitle());
-            movie.setNextTitle3(listMovie.get(position + 3).getTitle());
-
-            movie.setNextImage1(listMovie.get(position + 1).getImage());
-            movie.setNextImage2(listMovie.get(position + 2).getImage());
-            movie.setNextImage3(listMovie.get(position + 3).getImage());
-        }
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onItemClickCallback.onItemClicked(listMovie.get(holder.getAdapterPosition()));
+                onItemClickCallback.onItemClicked(listMovie.get(holder.getAdapterPosition()), holder.getAdapterPosition());
             }
         });
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(Movie data);
+        void onItemClicked(MovieModel data, int idx);
     }
 
     @Override

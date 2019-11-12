@@ -7,35 +7,36 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import learning.shinesdev.mymovies2.R;
-import learning.shinesdev.mymovies2.model.TV;
+import learning.shinesdev.mymovies2.model.TVShowModel;
 
-    public class ListDetailTVShowAdapter extends RecyclerView.Adapter<ListDetailTVShowAdapter.MyViewHolder> {
-        private Context context;
-        private LayoutInflater inflater;
-        private ArrayList<TV> arrayList;
+    public class ListRandTVShowAdapter extends RecyclerView.Adapter<ListRandTVShowAdapter.MyViewHolder> {
+        private final Context context;
+        private final LayoutInflater inflater;
+        private final ArrayList<TVShowModel> arrayList;
         private OnItemClickCallback onItemClickCallback;
 
-        public ListDetailTVShowAdapter(Context ctx, ArrayList<TV> imageModelArrayList){
+        public ListRandTVShowAdapter(Context ctx, ArrayList<TVShowModel> imageModelArrayList){
             inflater = LayoutInflater.from(ctx);
             this.context = ctx;
             this.arrayList = imageModelArrayList;
         }
 
+        @NonNull
         @Override
-        public ListDetailTVShowAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ListRandTVShowAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-            View view = inflater.inflate(R.layout.item_list_detail_tv, parent, false);
-            MyViewHolder holder = new MyViewHolder(view);
-            return holder;
+            View view = inflater.inflate(R.layout.item_list_detail_random, parent, false);
+            return new MyViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final ListDetailTVShowAdapter.MyViewHolder holder, int position) {
+        public void onBindViewHolder(final ListRandTVShowAdapter.MyViewHolder holder, int position) {
             holder.iv.setImageResource(context.getResources().getIdentifier(arrayList.get(position).getImage(), "drawable", context.getPackageName()));
             holder.time.setText(arrayList.get(position).getTitle());
 
@@ -54,10 +55,10 @@ import learning.shinesdev.mymovies2.model.TV;
 
         class MyViewHolder extends RecyclerView.ViewHolder{
 
-            TextView time;
-            ImageView iv;
+            final TextView time;
+            final ImageView iv;
 
-            public MyViewHolder(View itemView) {
+            MyViewHolder(View itemView) {
                 super(itemView);
                 time = itemView.findViewById(R.id.txt_tv_title);
                 iv =  itemView.findViewById(R.id.img_tv_thumb);
@@ -65,7 +66,7 @@ import learning.shinesdev.mymovies2.model.TV;
         }
 
         public interface OnItemClickCallback {
-            void onItemClicked(TV data);
+            void onItemClicked(TVShowModel data);
         }
         public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
             this.onItemClickCallback = onItemClickCallback;

@@ -43,11 +43,5 @@
         <item name="android:textColor">@color/colorGreyDarker</item>
     </style>
 
-    <style name="TextContent.Field.Grey">
-        <item name="android:textColor">@color/colorGreyDark</item>
-    </style>
-
-
-
 
 </resources>

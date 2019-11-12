@@ -3,16 +3,16 @@ package learning.shinesdev.mymovies2.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class TV implements Parcelable {
-    public static final Creator<TV> CREATOR = new Creator<TV>() {
+public class TVShowModel implements Parcelable {
+    public static final Creator<TVShowModel> CREATOR = new Creator<TVShowModel>() {
         @Override
-        public TV createFromParcel(Parcel in) {
-            return new TV(in);
+        public TVShowModel createFromParcel(Parcel in) {
+            return new TVShowModel(in);
         }
 
         @Override
-        public TV[] newArray(int size) {
-            return new TV[size];
+        public TVShowModel[] newArray(int size) {
+            return new TVShowModel[size];
         }
     };
 
@@ -34,10 +34,10 @@ public class TV implements Parcelable {
     private String nextImage2;
     private String nextImage3;
 
-    public TV() {
+    public TVShowModel() {
     }
 
-    private TV(Parcel in) {
+    private TVShowModel(Parcel in) {
         title = in.readString();
         nextTitle1 = in.readString();
         nextTitle2 = in.readString();
@@ -136,56 +136,6 @@ public class TV implements Parcelable {
 
     public void setVotes(String votes) {
         this.votes = votes;
-    }
-
-
-
-    public String getNextTitle1() {
-        return nextTitle1;
-    }
-
-    public void setNextTitle1(String nextTitle1) {
-        this.nextTitle1 = nextTitle1;
-    }
-
-    public String getNextTitle2() {
-        return nextTitle2;
-    }
-
-    public void setNextTitle2(String nextTitle2) {
-        this.nextTitle2 = nextTitle2;
-    }
-
-    public String getNextTitle3() {
-        return nextTitle3;
-    }
-
-    public void setNextTitle3(String nextTitle3) {
-        this.nextTitle3 = nextTitle3;
-    }
-
-    public String getNextImage1() {
-        return nextImage1;
-    }
-
-    public void setNextImage1(String nextImage1) {
-        this.nextImage1 = nextImage1;
-    }
-
-    public String getNextImage2() {
-        return nextImage2;
-    }
-
-    public void setNextImage2(String nextImage2) {
-        this.nextImage2 = nextImage2;
-    }
-
-    public String getNextImage3() {
-        return nextImage3;
-    }
-
-    public void setNextImage3(String nextImage3) {
-        this.nextImage3 = nextImage3;
     }
 
 
