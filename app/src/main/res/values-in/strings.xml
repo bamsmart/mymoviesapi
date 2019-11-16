@@ -1,4 +1,5 @@
 <resources>
+    <string name="language">id</string>
     <string name="app_name">My Movies 2</string>
     <string name="tab_text_1">Film</string>
     <string name="tab_text_2">Serial TV</string>

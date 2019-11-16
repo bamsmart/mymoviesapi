@@ -4,7 +4,7 @@ android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "learning.shinesdev.mymovies2"
+        applicationId "learning.shinesdev.mymoviesapi"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -28,7 +32,19 @@ dependencies {
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.google.android.material:material:1.0.0'
 
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+
+    /* LiveData lib*/
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:runtime:1.1.1"
+    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

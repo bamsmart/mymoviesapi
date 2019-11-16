@@ -34,6 +34,11 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TextContent.SubTitle1">
+        <item name="android:textColor">@color/colorGreyDarker</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="TextContent.Field">
         <item name="android:textColor">@color/colorGreyDarker</item>
         <item name="android:textStyle">normal</item>

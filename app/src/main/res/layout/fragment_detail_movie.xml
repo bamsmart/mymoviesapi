@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailMovieActivity">
+    tools:context="learning.shinesdev.mymoviesapi.DetailMovieActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -77,34 +77,6 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/lbl_movie_director"
-            android:layout_width="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="8dp"
-            android:text="@string/lbl_movie_director"
-            style="@style/TextContent.Title"
-            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
-            app:layout_constraintTop_toBottomOf="@+id/txt_movie_year"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/txt_movie_director"
-            android:layout_width="0dp"
-            android:layout_marginStart="8dp"
-            style="@style/TextContent.SubTitle"
-            android:text="@string/txt_movie_director"
-            app:layout_constraintBottom_toBottomOf="@+id/img_movie_thumb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
-            app:layout_constraintTop_toBottomOf="@+id/lbl_movie_director"
-            app:layout_constraintVertical_bias="0.0"/>
-
-
-        <TextView
             android:id="@+id/lbl_star"
             style="@style/TextContent.Title"
             android:layout_width="0dp"
@@ -115,12 +87,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toEndOf="@+id/img_movie_thumb"
-            app:layout_constraintTop_toBottomOf="@+id/txt_movie_director"
+            app:layout_constraintTop_toBottomOf="@+id/txt_movie_year"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/txt_movie_stars"
-            style="@style/TextContent.SubTitle"
+            style="@style/TextContent.SubTitle1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -156,7 +128,7 @@
 
         <TextView
             android:id="@+id/txt_movie_synopsis"
-            style="@style/TextContent.SubTitle"
+            style="@style/TextContent.SubTitle1"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:text="@string/txt_movie_synopsis"

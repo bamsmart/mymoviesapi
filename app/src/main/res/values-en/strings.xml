@@ -1,4 +1,5 @@
 <resources>
+    <string name="language">en-US</string>
     <string name="app_name">My Movies 2</string>
     <string name="tab_text_1">Movies</string>
     <string name="tab_text_2">TV Shows</string>
