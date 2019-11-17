@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import learning.shinesdev.mymoviesapi.R;
@@ -37,9 +39,11 @@ import learning.shinesdev.mymoviesapi.model.TVShowModel;
 
         @Override
         public void onBindViewHolder(final ListRandTVShowAdapter.MyViewHolder holder, int position) {
-            holder.iv.setImageResource(context.getResources().getIdentifier(arrayList.get(position).getImage(), "drawable", context.getPackageName()));
-            holder.time.setText(arrayList.get(position).getTitle());
-
+            holder.title.setText(arrayList.get(position).getName());
+            String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+ arrayList.get(position).getPoster_path();
+            Glide.with(context).load(img_url)
+                    .centerCrop()
+                    .into(holder.image);
             holder.itemView.setOnClickListener(v -> onItemClickCallback.onItemClicked(arrayList.get(holder.getAdapterPosition())));
         }
 
@@ -50,13 +54,13 @@ import learning.shinesdev.mymoviesapi.model.TVShowModel;
 
         class MyViewHolder extends RecyclerView.ViewHolder{
 
-            final TextView time;
-            final ImageView iv;
+            final TextView title;
+            final ImageView image;
 
             MyViewHolder(View itemView) {
                 super(itemView);
-                time = itemView.findViewById(R.id.txt_tv_title);
-                iv =  itemView.findViewById(R.id.img_tv_thumb);
+                title = itemView.findViewById(R.id.txt_tv_title);
+                image =  itemView.findViewById(R.id.img_tv_thumb);
             }
         }
 

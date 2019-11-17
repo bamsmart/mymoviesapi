@@ -19,7 +19,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
             android:contentDescription="@string/todo"
-            android:src="@drawable/poster_avengerinfinity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -94,7 +93,7 @@
 
         <TextView
             android:id="@+id/txt_tv_stars"
-            style="@style/TextContent.SubTitle"
+            style="@style/TextContent.SubTitle1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -130,7 +129,7 @@
 
         <TextView
             android:id="@+id/txt_tv_synopsis"
-            style="@style/TextContent.SubTitle"
+            style="@style/TextContent.SubTitle1"
             android:layout_marginStart="12dp"
             android:layout_marginTop="4dp"
             android:text="@string/txt_movie_synopsis"

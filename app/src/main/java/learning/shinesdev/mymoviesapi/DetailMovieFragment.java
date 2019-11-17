@@ -76,17 +76,17 @@ public class DetailMovieFragment extends Fragment {
         imgThumb = view.findViewById(R.id.img_movie_thumb);
         recommMovieRecyclerView = view.findViewById(R.id.rv_detail_movie);
 
-        MovieModel extraData = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
+        final MovieModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
 
         movie = ViewModelProviders.of(getActivity()).get(MovieModel.class);
-        movie.init(extraData.getId());
+        movie.init(EX.getId());
         movie.getMovieRepository().observe(getActivity(), response -> {
             progressDialog.dismiss();
             setupUI(response);
         });
 
         movieBunddle = ViewModelProviders.of(getActivity()).get(Movie.class);
-        movieBunddle.initRecommendation(extraData.getId());
+        movieBunddle.initRecommendation(EX.getId());
         movieBunddle.getMovieRepository().observe(getActivity(), response -> {
             List<MovieModel> data = response.getMovieList();
             recommMovieArrList.addAll(data);
@@ -94,7 +94,7 @@ public class DetailMovieFragment extends Fragment {
         });
 
         movieCredits = ViewModelProviders.of(getActivity()).get(MovieCredits.class);
-        movieCredits.init(extraData.getId());
+        movieCredits.init(EX.getId());
         movieCredits.getMovieRepository().observe(getActivity(),response -> {
             List<MovieCredits> credits = response.getCreditsList();
             String strCredits = "";
@@ -111,13 +111,13 @@ public class DetailMovieFragment extends Fragment {
 
 
         if (getArguments() != null) {
-            extraData = getArguments().getParcelable(GlobVar.EX_MOVIE);
-            txtTitle.setText(extraData.getTitle());
-            txtYear.setText(extraData.getDate());
-            txtSynopnsis.setText(extraData.getOverview());
-            txtVotes.setText(String.valueOf(extraData.getVote()));
-            txtGross.setText(String.valueOf(extraData.getRevenue()));
-            String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + extraData.getImage();
+            final MovieModel EXT = getArguments().getParcelable(GlobVar.EX_MOVIE);
+            txtTitle.setText(EX.getTitle());
+            txtYear.setText(EX.getDate());
+            txtSynopnsis.setText(EX.getOverview());
+            txtVotes.setText(String.valueOf(EXT.getVote()));
+            txtGross.setText(String.valueOf(EXT.getRevenue()));
+            String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + EXT.getImage();
 
             Glide.with(getContext()).load(img_url)
                     .centerCrop()

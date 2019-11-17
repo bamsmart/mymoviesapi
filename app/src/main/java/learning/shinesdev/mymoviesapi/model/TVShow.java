@@ -11,9 +11,9 @@ import java.util.List;
 
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
-import learning.shinesdev.mymoviesapi.repository.MovieRepository;
+import learning.shinesdev.mymoviesapi.repository.TVShowRepository;
 
-public class Movie extends ViewModel {
+public class TVShow extends ViewModel {
     @SerializedName("page")
     @Expose
     private int page;
@@ -28,33 +28,32 @@ public class Movie extends ViewModel {
 
     @SerializedName("results")
     @Expose
-    private List<MovieModel> movieList;
-
-    private MutableLiveData<Movie> mutableLiveData;
-    private MovieRepository movieRepository;
+    private List<TVShowModel> tvshowList;
+    private MutableLiveData<TVShow> mutableLiveData;
+    private TVShowRepository tvShowRepository;
 
     public void init(){
         if (mutableLiveData != null){
             return;
         }
-        movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getPopular(String.valueOf(R.string.language),ApiUtils.API_KEY);
+        tvShowRepository = TVShowRepository.getInstance();
+        mutableLiveData = tvShowRepository.getPopular(String.valueOf(R.string.language),ApiUtils.API_KEY);
     }
 
     public void initRecommendation(int id){
         if (mutableLiveData != null){
             return;
         }
-        movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getRecommendations(id,String.valueOf(R.string.language),ApiUtils.API_KEY);
+        tvShowRepository = TVShowRepository.getInstance();
+        mutableLiveData = tvShowRepository.getRecommendations(id,String.valueOf(R.string.language),ApiUtils.API_KEY);
     }
 
-    public LiveData<Movie> getMovieRepository() {
+    public LiveData<TVShow> getTVShowRepository() {
         return mutableLiveData;
     }
 
-    public List<MovieModel> getMovieList() {
-        return movieList;
+    public List<TVShowModel> getTVShowList() {
+        return tvshowList;
     }
 
 }

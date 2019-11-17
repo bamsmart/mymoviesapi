@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.ListMovieAdapter;
 import learning.shinesdev.mymoviesapi.model.Movie;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
@@ -33,7 +32,8 @@ public class MovieFragment extends Fragment {
     private RecyclerView rvMovies;
     private ListMovieAdapter listMovieAdapter;
     private final ArrayList<MovieModel> arrListMovie = new ArrayList<>();
-    ProgressBar progressBar;
+    private ProgressBar progressBar;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

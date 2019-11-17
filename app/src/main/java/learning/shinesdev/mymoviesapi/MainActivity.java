@@ -40,14 +40,12 @@ public class MainActivity extends AppCompatActivity {
         mnInf.inflate(R.menu.setting, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.setting) {
             Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(mIntent);
         }
-
         return true;
     }
 }

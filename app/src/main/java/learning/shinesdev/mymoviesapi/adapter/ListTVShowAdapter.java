@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import learning.shinesdev.mymoviesapi.R;
@@ -41,25 +43,24 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
     public void onBindViewHolder(@NonNull final ListTVShowAdapter.ListViewHolder holder, int position) {
         TVShowModel tvshow = listTVShow.get(position);
 
-        holder.txtTitle.setText(tvshow.getTitle());
-        holder.txtYear.setText("("+tvshow.getYear());
-        holder.txtGroup.setText(tvshow.getGroup());
-        holder.txtDuration.setText(tvshow.getDuration());
-        holder.txtRate.setText(tvshow.getRating());
-        holder.txtOverview.setText(tvshow.getSynopsis());
-        holder.txtStars.setText(tvshow.getStars());
-        holder.txtVotes.setText(tvshow.getVotes());
-        try{
-            holder.imgThumb.setImageResource(context.getResources().getIdentifier(tvshow.getImage(), "drawable", context.getPackageName()));
-        }catch (Exception e){
+        holder.txtTitle.setText(tvshow.getName());
+        holder.txtYear.setText(String.valueOf(tvshow.getFirst_air_date()));
+        holder.txtRate.setText(String.valueOf(tvshow.getVote_average()));
+        holder.txtOverview.setText(tvshow.getOverview());
+        holder.txtVotes.setText(String.valueOf(tvshow.getVote_count()));
+        String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + tvshow.getPoster_path();
+        try {
+            Glide.with(context).load(img_url)
+                    .centerCrop()
+                    .into(holder.imgThumb);
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        holder.itemView.setOnClickListener(v -> onItemClickCallback.onItemClicked(listTVShow.get(holder.getAdapterPosition()),holder.getAdapterPosition()));
+        holder.itemView.setOnClickListener(v -> onItemClickCallback.onItemClicked(listTVShow.get(holder.getAdapterPosition())));
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(TVShowModel data, int idx);
+        void onItemClicked(TVShowModel data);
     }
 
     @Override
@@ -71,11 +72,8 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
 
         private final TextView txtTitle;
         private final TextView txtYear;
-        private final TextView txtGroup;
-        private final TextView txtDuration;
         private final TextView txtRate;
         private final TextView txtOverview;
-        private final TextView txtStars;
         private final TextView txtVotes;
         private final ImageView imgThumb;
 
@@ -84,11 +82,8 @@ public class ListTVShowAdapter extends RecyclerView.Adapter<ListTVShowAdapter.Li
 
             txtTitle = itemView.findViewById(R.id.txt_tv_title);
             txtYear = itemView.findViewById(R.id.txt_tv_year);
-            txtGroup = itemView.findViewById(R.id.txt_tv_age_group);
-            txtDuration = itemView.findViewById(R.id.txt_tv_minutes);
             txtRate = itemView.findViewById(R.id.txt_tv_rating);
             txtOverview = itemView.findViewById(R.id.txt_tv_sinopsis);
-            txtStars = itemView.findViewById(R.id.txt_tv_stars);
             txtVotes = itemView.findViewById(R.id.txt_tv_votes);
             imgThumb = itemView.findViewById(R.id.img_tv_thumb);
         }

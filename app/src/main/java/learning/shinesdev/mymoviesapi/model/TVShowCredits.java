@@ -10,9 +10,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
-import learning.shinesdev.mymoviesapi.repository.MovieRepository;
+import learning.shinesdev.mymoviesapi.repository.TVShowRepository;
 
-public class MovieCredits extends ViewModel {
+public class TVShowCredits extends ViewModel {
     @SerializedName("id")
     @Expose
     private
@@ -34,27 +34,27 @@ public class MovieCredits extends ViewModel {
 
     @SerializedName("cast")
     @Expose
-    private List<MovieCredits> creditsList;
+    private List<TVShowCredits> creditsList;
 
     public String getName() {
         return name;
     }
 
-    public List<MovieCredits> getCreditsList() {
+    public List<TVShowCredits> getCreditsList() {
         return creditsList;
     }
 
-    private MutableLiveData<MovieCredits> mutableLiveData;
+    private MutableLiveData<TVShowCredits> mutableLiveData;
 
     public void init(int id){
         if (mutableLiveData != null){
             return;
         }
-        MovieRepository movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getCredits(id, ApiUtils.API_KEY);
+       TVShowRepository tvShowRepository = TVShowRepository.getInstance();
+        mutableLiveData = tvShowRepository.getCredits(id, ApiUtils.API_KEY);
     }
 
-    public LiveData<MovieCredits> getMovieRepository() {
+    public LiveData<TVShowCredits> getTVShowRepository() {
         return mutableLiveData;
     }
 }

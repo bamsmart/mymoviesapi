@@ -25,7 +25,7 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    private ArrayList<MovieModel> listMovie;
+    private final ArrayList<MovieModel> listMovie;
 
     public ListMovieAdapter(Context context, ArrayList<MovieModel> list) {
         this.context = context;

@@ -23,31 +23,24 @@
         android:paddingStart="@dimen/activity_horizontal_margin"
         android:paddingEnd="@dimen/activity_horizontal_margin">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txt_tv_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:textColor="@color/colorBluePrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="@string/lbl_tv_title" />
 
-            <TextView
-                android:id="@+id/txt_tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:textColor="@color/colorBluePrimaryDark"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                tools:text="@string/lbl_tv_title" />
-
-            <TextView
-                android:id="@+id/txt_tv_year"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/colorGreyDarker"
-                tools:text=" (2018)" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/txt_tv_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/colorGreyDarker"
+            tools:text="@string/txt_movie_year" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,8 +94,8 @@
                 android:layout_width="17dp"
                 android:layout_height="17dp"
                 android:layout_marginEnd="3dp"
-                android:src="@drawable/stars"
-                android:contentDescription="@string/todo" />
+                android:contentDescription="@string/todo"
+                android:src="@drawable/stars" />
 
             <TextView
                 android:id="@+id/txt_tv_rating"

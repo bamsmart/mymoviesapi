@@ -12,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
 
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
+import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
 public class MovieModel extends ViewModel implements Parcelable {
     @SerializedName("popularity")
@@ -81,64 +82,28 @@ public class MovieModel extends ViewModel implements Parcelable {
         return image;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public double getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(double popularity) {
-        this.popularity = popularity;
     }
 
     public int getVote() {
         return vote;
     }
 
-    public void setVote(int vote) {
-        this.vote = vote;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public double getRating() {
         return rating;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
-    }
-
     public String getOverview() {
         return overview;
     }
 
-    public void setOverview(String overview) {
-        this.overview = overview;
-    }
-
     public String getDate() {
         return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
     }
 
     @Override
@@ -167,15 +132,4 @@ public class MovieModel extends ViewModel implements Parcelable {
         return revenue;
     }
 
-    public void setRevenue(String revenue) {
-        this.revenue = revenue;
-    }
-
-    public String getBudget() {
-        return budget;
-    }
-
-    public void setBudget(String budget) {
-        this.budget = budget;
-    }
 }

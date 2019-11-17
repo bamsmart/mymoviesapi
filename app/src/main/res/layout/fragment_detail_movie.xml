@@ -19,7 +19,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
             android:contentDescription="@string/todo"
-            android:src="@drawable/poster_avengerinfinity"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

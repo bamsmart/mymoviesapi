@@ -39,8 +39,9 @@ public class ListRandMovieAdapter extends RecyclerView.Adapter<ListRandMovieAdap
 
     @Override
     public void onBindViewHolder(final ListRandMovieAdapter.MyViewHolder holder, int position) {
-        holder.time.setText(movieList.get(position).getTitle());
-        String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+movieList.get(position).getImage();
+        MovieModel movieModel = movieList.get(position);
+        holder.time.setText(movieModel.getTitle());
+        String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+movieModel.getImage();
         try {
             Glide.with(context).load(img_url)
                     .centerCrop()

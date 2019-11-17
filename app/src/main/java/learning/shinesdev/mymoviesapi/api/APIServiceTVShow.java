@@ -1,9 +1,9 @@
 package learning.shinesdev.mymoviesapi.api;
 
 
-import learning.shinesdev.mymoviesapi.model.Movie;
-import learning.shinesdev.mymoviesapi.model.MovieCredits;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.TVShow;
+import learning.shinesdev.mymoviesapi.model.TVShowCredits;
+import learning.shinesdev.mymoviesapi.model.TVShowModel;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -11,38 +11,28 @@ import retrofit2.http.Query;
 
 
 public interface APIServiceTVShow {
-    @GET("3/movie/popular")
-    Call<Movie> getPopular(
+    @GET("3/tv/popular")
+    Call<TVShow> getPopular(
             @Query("language") String lang,
             @Query("api_key") String key
     );
 
-    @GET("3/movie/{movie_id}/recommendations")
-    Call<Movie> getRecommendations(
-            @Path("movie_id") int id,
+    @GET("3/tv/{tv_id}/recommendations")
+    Call<TVShow> getRecommendations(
+            @Path("tv_id") int id,
             @Query("language") String lang,
             @Query("api_key") String key
     );
 
-    @GET("3/movie/{movie_id}/credits")
-    Call<MovieCredits> getCredits(
-            @Path("movie_id") int id,
+    @GET("3/tv/{tv_id}/credits")
+    Call<TVShowCredits> getCredits(
+            @Path("tv_id") int id,
             @Query("api_key") String key
     );
 
-    @GET("3/movie/top_rated")
-    Call<Movie> getTopRated(
-            @Query("api_key") String key
-    );
-
-    @GET("3/movie/latest")
-    Call<Movie> getLatest(
-            @Query("api_key") String key
-    );
-
-    @GET("3/movie/{movie_id}")
-    Call<MovieModel> getDetails(
-            @Path("movie_id") int id,
+    @GET("3/tv/{tv_id}")
+    Call<TVShowModel> getDetails(
+            @Path("tv_id") int id,
             @Query("language") String lang,
             @Query("api_key") String key
     );

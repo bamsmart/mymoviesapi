@@ -30,16 +30,6 @@ public interface APIServiceMovie {
             @Query("api_key") String key
     );
 
-    @GET("3/movie/top_rated")
-    Call<Movie> getTopRated(
-            @Query("api_key") String key
-    );
-
-    @GET("3/movie/latest")
-    Call<Movie> getLatest(
-            @Query("api_key") String key
-    );
-
     @GET("3/movie/{movie_id}")
     Call<MovieModel> getDetails(
             @Path("movie_id") int id,
