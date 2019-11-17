@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
@@ -60,12 +59,12 @@ public class MovieModel extends ViewModel implements Parcelable {
 
     private MutableLiveData<MovieModel> mutableLiveData;
 
-    public void init(int id){
-        if (mutableLiveData != null){
+    public void init(int id,String language){
+        /*if (mutableLiveData != null){
             return;
-        }
+        }*/
         MovieRepository movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getDetail(id, String.valueOf(R.string.language),ApiUtils.API_KEY);
+        mutableLiveData = movieRepository.getDetail(id, language,ApiUtils.API_KEY);
     }
 
     public LiveData<MovieModel> getMovieRepository() {

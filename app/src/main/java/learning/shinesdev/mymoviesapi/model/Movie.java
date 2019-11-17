@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
@@ -33,20 +32,20 @@ public class Movie extends ViewModel {
     private MutableLiveData<Movie> mutableLiveData;
     private MovieRepository movieRepository;
 
-    public void init(){
-        if (mutableLiveData != null){
+    public void init(String language){
+       /* if (mutableLiveData != null){
             return;
-        }
+        }*/
         movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getPopular(String.valueOf(R.string.language),ApiUtils.API_KEY);
+        mutableLiveData = movieRepository.getPopular(language,ApiUtils.API_KEY);
     }
 
-    public void initRecommendation(int id){
-        if (mutableLiveData != null){
+    public void initRecommendation(int id,String language){
+        /*if (mutableLiveData != null){
             return;
-        }
+        }*/
         movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getRecommendations(id,String.valueOf(R.string.language),ApiUtils.API_KEY);
+        mutableLiveData = movieRepository.getRecommendations(id,language,ApiUtils.API_KEY);
     }
 
     public LiveData<Movie> getMovieRepository() {

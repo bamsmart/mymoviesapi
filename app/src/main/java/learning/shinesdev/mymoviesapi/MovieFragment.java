@@ -49,7 +49,7 @@ public class MovieFragment extends Fragment {
             rvMovies.setHasFixedSize(true);
 
             Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
-            movie.init();
+            movie.init(getActivity().getResources().getString(R.string.language));
             movie.getMovieRepository().observe(getActivity(), response -> {
                 progressBar.setVisibility(View.GONE);
                 List<MovieModel> data = response.getMovieList();
@@ -86,5 +86,26 @@ public class MovieFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
+        movie.init(getActivity().getResources().getString(R.string.language));
+        movie.getMovieRepository().observe(getActivity(), response -> {
+            progressBar.setVisibility(View.GONE);
+            List<MovieModel> data = response.getMovieList();
+            arrListMovie.addAll(data);
+            listMovieAdapter = new ListMovieAdapter(getContext(), arrListMovie);
+            rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
+            rvMovies.setAdapter(listMovieAdapter);
+            rvMovies.setItemAnimator(new DefaultItemAnimator());
+            rvMovies.setNestedScrollingEnabled(true);
 
+            listMovieAdapter.setOnItemClickCallback(moviedata -> {
+                Intent intent = new Intent(getContext(), DetailMovieActivity.class);
+                intent.putExtra(GlobVar.EX_MOVIE, moviedata);
+                startActivity(intent);
+            });
+        });
+    }
 }

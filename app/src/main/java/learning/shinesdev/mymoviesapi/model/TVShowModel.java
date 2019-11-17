@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.TVShowRepository;
 
@@ -133,12 +132,12 @@ public class TVShowModel  extends ViewModel implements Parcelable {
 
     private MutableLiveData<TVShowModel> mutableLiveData;
 
-    public void init(int id){
-        if (mutableLiveData != null){
+    public void init(int id,String language){
+        /*if (mutableLiveData != null){
             return;
-        }
+        }*/
         TVShowRepository tvShowRepository = TVShowRepository.getInstance();
-        mutableLiveData = tvShowRepository.getDetail(id, String.valueOf(R.string.language), ApiUtils.API_KEY);
+        mutableLiveData = tvShowRepository.getDetail(id,language, ApiUtils.API_KEY);
     }
 
     public LiveData<TVShowModel> getTVShowRepository() {

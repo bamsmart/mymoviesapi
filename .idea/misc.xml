@@ -1,5 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel backdrop_path" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel budget" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieCredits character" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowCredits character" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel CREATOR" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel CREATOR" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieCredits creditsList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowCredits creditsList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel first_air_date" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel genre_ids" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieCredits id" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowCredits id" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieCredits image" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowCredits image" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment imgThumb" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment imgThumb" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment movie" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment movieBunddle" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment movieCredits" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.Movie movieList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieCredits name" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowCredits name" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel name" />
+      <entry_point TYPE="method" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment$1 void onItemClicked(learning.shinesdev.mymoviesapi.model.MovieModel data)" />
+      <entry_point TYPE="method" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment$1 void onItemClicked(learning.shinesdev.mymoviesapi.model.TVShowModel data)" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel original_language" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel original_name" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel overview" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.Movie page" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShow page" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel popularity" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel popularity" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel poster_path" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel rating" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment recommMovieAdapter" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment recommMovieArrList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment recommMovieRecyclerView" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment recommTVShowAdapter" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment recommTVShowArrList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment recommTVShowRecyclerView" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel revenue" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.Movie total_pages" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShow total_pages" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.Movie total_result" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShow total_result" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment tvShow" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment tvShowCredits" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShow tvshowList" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment tvShowModel" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtDirector" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtGross" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtStars" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment txtStars" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtSynopnsis" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment txtSynopnsis" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtTitle" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment txtTitle" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtVotes" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment txtVotes" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailMovieFragment txtYear" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.DetailTVShowFragment txtYear" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel vote" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel vote_average" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel vote_count" />
+    </entry_points>
+    <pattern value="learning.shinesdev.mymoviesapi.ExampleUnitTest" method="addition_isCorrect" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieActivity" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" method="DetailMovieFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowActivity" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" method="DetailTVShowFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.ExampleInstrumentedTest" />
+    <pattern value="learning.shinesdev.mymoviesapi.ExampleUnitTest" />
+    <pattern value="learning.shinesdev.mymoviesapi.MainActivity" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.Movie" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieCredits" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieModel" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" method="onCreateView" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" method="onCreateView" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" method="onViewCreated" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" method="onViewCreated" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" method="setupRecommRecyclerView" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" method="setupRecommRecyclerView" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailMovieFragment" method="setupUI" />
+    <pattern value="learning.shinesdev.mymoviesapi.DetailTVShowFragment" method="setupUI" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.TVShow" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.TVShowCredits" />
+    <pattern value="learning.shinesdev.mymoviesapi.TVShowFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.TVShowFragment" method="TVShowFragment" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.TVShowModel" />
+    <pattern value="learning.shinesdev.mymoviesapi.ExampleInstrumentedTest" method="useAppContext" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieModel" method="MovieModel" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.TVShowModel" method="TVShowModel" />
+  </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />
     <option name="myDefaultNotNull" value="androidx.annotation.NonNull" />

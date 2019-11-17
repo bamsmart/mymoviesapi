@@ -9,7 +9,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.TVShowRepository;
 
@@ -32,20 +31,20 @@ public class TVShow extends ViewModel {
     private MutableLiveData<TVShow> mutableLiveData;
     private TVShowRepository tvShowRepository;
 
-    public void init(){
-        if (mutableLiveData != null){
+    public void init(String language){
+        /*if (mutableLiveData != null){
             return;
-        }
+        }*/
         tvShowRepository = TVShowRepository.getInstance();
-        mutableLiveData = tvShowRepository.getPopular(String.valueOf(R.string.language),ApiUtils.API_KEY);
+        mutableLiveData = tvShowRepository.getPopular(language,ApiUtils.API_KEY);
     }
 
-    public void initRecommendation(int id){
-        if (mutableLiveData != null){
+    public void initRecommendation(int id,String language){
+        /*if (mutableLiveData != null){
             return;
-        }
+        }*/
         tvShowRepository = TVShowRepository.getInstance();
-        mutableLiveData = tvShowRepository.getRecommendations(id,String.valueOf(R.string.language),ApiUtils.API_KEY);
+        mutableLiveData = tvShowRepository.getRecommendations(id,language,ApiUtils.API_KEY);
     }
 
     public LiveData<TVShow> getTVShowRepository() {

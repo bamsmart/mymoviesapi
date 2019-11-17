@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +59,7 @@ public class TVShowFragment extends Fragment {
             progressBar = view.findViewById(R.id.progress_tvshow);
 
             TVShow tvshow = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(TVShow.class);
-            tvshow.init();
+            tvshow.init(getActivity().getResources().getString(R.string.language));
             tvshow.getTVShowRepository().observe(getActivity(), response -> {
                 progressBar.setVisibility(View.GONE);
                 List<TVShowModel> data = response.getTVShowList();
@@ -86,9 +85,30 @@ public class TVShowFragment extends Fragment {
         listTVShowAdapter.setOnItemClickCallback(data -> {
             Intent intent = new Intent(getContext(), DetailTVShowActivity.class);
             intent.putExtra(GlobVar.EX_TV, data);
-
-            Log.d("SEND TV ID",""+data.getId());
             startActivity(intent);
+        });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        TVShow tvshow = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(TVShow.class);
+        tvshow.init(getActivity().getResources().getString(R.string.language));
+        tvshow.getTVShowRepository().observe(getActivity(), response -> {
+            progressBar.setVisibility(View.GONE);
+            List<TVShowModel> data = response.getTVShowList();
+            tvShowList.addAll(data);
+            listTVShowAdapter = new ListTVShowAdapter(getContext(), tvShowList);
+            rvTVShow.setLayoutManager(new LinearLayoutManager(getContext()));
+            rvTVShow.setAdapter(listTVShowAdapter);
+            rvTVShow.setItemAnimator(new DefaultItemAnimator());
+            rvTVShow.setNestedScrollingEnabled(true);
+
+            listTVShowAdapter.setOnItemClickCallback(tvshowdata -> {
+                Intent intent = new Intent(getContext(), DetailTVShowActivity.class);
+                intent.putExtra(GlobVar.EX_TV, tvshowdata);
+                startActivity(intent);
+            });
         });
     }
 }

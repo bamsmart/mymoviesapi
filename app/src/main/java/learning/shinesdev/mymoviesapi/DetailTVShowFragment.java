@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,14 +76,14 @@ public class DetailTVShowFragment extends Fragment {
 
         final TVShowModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_TV);
         tvShowModel = ViewModelProviders.of(getActivity()).get(TVShowModel.class);
-
-        tvShowModel.init((EX.getId()));
+        Log.d("LANGUAGE DI SINI ","");
+        tvShowModel.init((EX.getId()), getActivity().getResources().getString(R.string.language));
         tvShowModel.getTVShowRepository().observe(getActivity(), response -> {
             progressDialog.dismiss();
             setupUI(response);
         });
         tvShow = ViewModelProviders.of(getActivity()).get(TVShow.class);
-        tvShow.initRecommendation(EX.getId());
+        tvShow.initRecommendation(EX.getId(), getActivity().getResources().getString(R.string.language));
         tvShow.getTVShowRepository().observe(getActivity(), response -> {
             List<TVShowModel> data = response.getTVShowList();
             recommTVShowArrList.addAll(data);

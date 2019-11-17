@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.ListRandMovieAdapter;
 import learning.shinesdev.mymoviesapi.model.Movie;
 import learning.shinesdev.mymoviesapi.model.MovieCredits;
@@ -79,14 +78,14 @@ public class DetailMovieFragment extends Fragment {
         final MovieModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
 
         movie = ViewModelProviders.of(getActivity()).get(MovieModel.class);
-        movie.init(EX.getId());
+        movie.init(EX.getId(),getActivity().getResources().getString(R.string.language));
         movie.getMovieRepository().observe(getActivity(), response -> {
             progressDialog.dismiss();
             setupUI(response);
         });
 
         movieBunddle = ViewModelProviders.of(getActivity()).get(Movie.class);
-        movieBunddle.initRecommendation(EX.getId());
+        movieBunddle.initRecommendation(EX.getId(), getActivity().getResources().getString(R.string.language));
         movieBunddle.getMovieRepository().observe(getActivity(), response -> {
             List<MovieModel> data = response.getMovieList();
             recommMovieArrList.addAll(data);
