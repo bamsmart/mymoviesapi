@@ -39,15 +39,5 @@
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="TextContent.Field">
-        <item name="android:textColor">@color/colorGreyDarker</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <style name="TextContent.Field.GreyDark">
-        <item name="android:textColor">@color/colorGreyDarker</item>
-    </style>
-
 
 </resources>
