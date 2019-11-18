@@ -48,7 +48,7 @@ public class MovieModel extends ViewModel implements Parcelable {
 
     @SerializedName("revenue")
     @Expose
-    private String revenue;
+    private int revenue;
 
     @SerializedName("budget")
     @Expose
@@ -59,12 +59,12 @@ public class MovieModel extends ViewModel implements Parcelable {
 
     private MutableLiveData<MovieModel> mutableLiveData;
 
-    public void init(int id,String language){
-        /*if (mutableLiveData != null){
+    public void init(int id,String prevLang,String currLang){
+        if (mutableLiveData != null && (prevLang.isEmpty() || prevLang.equals(currLang))){
             return;
-        }*/
+        }
         MovieRepository movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getDetail(id, language,ApiUtils.API_KEY);
+        mutableLiveData = movieRepository.getDetail(id, currLang,ApiUtils.API_KEY);
     }
 
     public LiveData<MovieModel> getMovieRepository() {
@@ -75,7 +75,10 @@ public class MovieModel extends ViewModel implements Parcelable {
         id = in.readInt();
         title = in.readString();
         date = in.readString();
+        overview = in.readString();
         image = in.readString();
+        vote = in.readInt();
+        revenue = in.readInt();
     }
     public String getImage() {
         return image;
@@ -113,6 +116,12 @@ public class MovieModel extends ViewModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int i) {
         dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(date);
+        dest.writeString(overview);
+        dest.writeString(image);
+        dest.writeInt(vote);
+        dest.writeInt(revenue);
     }
 
     public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
@@ -127,7 +136,7 @@ public class MovieModel extends ViewModel implements Parcelable {
         }
     };
 
-    public String getRevenue() {
+    public int getRevenue() {
         return revenue;
     }
 

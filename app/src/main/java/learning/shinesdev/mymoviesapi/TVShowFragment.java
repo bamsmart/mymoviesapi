@@ -27,6 +27,7 @@ import learning.shinesdev.mymoviesapi.model.TVShow;
 import learning.shinesdev.mymoviesapi.model.TVShowModel;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
+import learning.shinesdev.mymoviesapi.utils.SessionManager;
 
 
 /**
@@ -52,22 +53,37 @@ public class TVShowFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ConnectionDetector conn = new ConnectionDetector(getContext());
-        if (conn.isConnectingToInternet()) {
-            rvTVShow = view.findViewById(R.id.rv_tvshow);
-            rvTVShow.setHasFixedSize(true);
-            progressBar = view.findViewById(R.id.progress_tvshow);
+        SessionManager session = new SessionManager(Objects.requireNonNull(getContext()));
 
-            TVShow tvshow = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(TVShow.class);
-            tvshow.init(getActivity().getResources().getString(R.string.language));
-            tvshow.getTVShowRepository().observe(getActivity(), response -> {
+        rvTVShow = view.findViewById(R.id.rv_tvshow);
+        rvTVShow.setHasFixedSize(true);
+        progressBar = view.findViewById(R.id.progress_tvshow);
+
+        if (savedInstanceState != null) {
+            progressBar.setVisibility(View.GONE);
+            List<TVShowModel> exdata = savedInstanceState.getParcelableArrayList(GlobVar.EX_TV);
+            tvShowList.addAll(Objects.requireNonNull(exdata));
+            showRecyclerList();
+            session.setPrevLang(getResources().getString(R.string.language));
+        }else {
+            ConnectionDetector conn = new ConnectionDetector(getContext());
+            if (conn.isConnectingToInternet()) {
+                String prevLang = session.getPrevLang();
+                String currLang = Objects.requireNonNull(getActivity()).getResources().getString(R.string.language);
+
+                TVShow tvshow = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(TVShow.class);
+                tvshow.init(prevLang, currLang);
+                tvshow.getTVShowRepository().observe(getActivity(), response -> {
+                    progressBar.setVisibility(View.GONE);
+                    List<TVShowModel> data = response.getTVShowList();
+                    tvShowList.addAll(data);
+                    showRecyclerList();
+                    session.setPrevLang(getResources().getString(R.string.language));
+                });
+            } else {
                 progressBar.setVisibility(View.GONE);
-                List<TVShowModel> data = response.getTVShowList();
-                tvShowList.addAll(data);
-                showRecyclerList();
-            });
-        } else {
-            Toast.makeText(getContext(), "No internet connection!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -88,27 +104,9 @@ public class TVShowFragment extends Fragment {
             startActivity(intent);
         });
     }
-
     @Override
-    public void onResume() {
-        super.onResume();
-        TVShow tvshow = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(TVShow.class);
-        tvshow.init(getActivity().getResources().getString(R.string.language));
-        tvshow.getTVShowRepository().observe(getActivity(), response -> {
-            progressBar.setVisibility(View.GONE);
-            List<TVShowModel> data = response.getTVShowList();
-            tvShowList.addAll(data);
-            listTVShowAdapter = new ListTVShowAdapter(getContext(), tvShowList);
-            rvTVShow.setLayoutManager(new LinearLayoutManager(getContext()));
-            rvTVShow.setAdapter(listTVShowAdapter);
-            rvTVShow.setItemAnimator(new DefaultItemAnimator());
-            rvTVShow.setNestedScrollingEnabled(true);
-
-            listTVShowAdapter.setOnItemClickCallback(tvshowdata -> {
-                Intent intent = new Intent(getContext(), DetailTVShowActivity.class);
-                intent.putExtra(GlobVar.EX_TV, tvshowdata);
-                startActivity(intent);
-            });
-        });
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(GlobVar.EX_TV,tvShowList);
     }
 }

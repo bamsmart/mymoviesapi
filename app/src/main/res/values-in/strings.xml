@@ -41,5 +41,6 @@
     <string name="lbl_image_desc">Deskripsi</string>
     <string name="lbl_rating">Rating</string>
     <string name="title">Judul</string>
+    <string name="koneksi">Tidak ada koneksi internet!</string>
 
 </resources>

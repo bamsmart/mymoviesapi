@@ -26,12 +26,14 @@ import learning.shinesdev.mymoviesapi.model.Movie;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
+import learning.shinesdev.mymoviesapi.utils.SessionManager;
 
 
 public class MovieFragment extends Fragment {
     private RecyclerView rvMovies;
     private ListMovieAdapter listMovieAdapter;
     private final ArrayList<MovieModel> arrListMovie = new ArrayList<>();
+    private List<MovieModel> data;
     private ProgressBar progressBar;
 
     @Override
@@ -42,22 +44,36 @@ public class MovieFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ConnectionDetector conn = new ConnectionDetector(getContext());
-        if(conn.isConnectingToInternet()) {
-            progressBar = view.findViewById(R.id.progress_movie);
-            rvMovies = view.findViewById(R.id.rv_movies);
-            rvMovies.setHasFixedSize(true);
+        SessionManager session = new SessionManager(Objects.requireNonNull(getContext()));
+        progressBar = view.findViewById(R.id.progress_movie);
+        rvMovies = view.findViewById(R.id.rv_movies);
+        rvMovies.setHasFixedSize(true);
 
-            Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
-            movie.init(getActivity().getResources().getString(R.string.language));
-            movie.getMovieRepository().observe(getActivity(), response -> {
+        if (savedInstanceState != null) {
+            progressBar.setVisibility(View.GONE);
+            List<MovieModel> exdata = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE);
+            arrListMovie.addAll(Objects.requireNonNull(exdata));
+            setupRecyclerView();
+            session.setPrevLang(getResources().getString(R.string.language));
+        }else {
+            ConnectionDetector conn = new ConnectionDetector(getContext());
+            if (conn.isConnectingToInternet()) {
+                String prevLang = session.getPrevLang();
+                String currLang = Objects.requireNonNull(getActivity()).getResources().getString(R.string.language);
+
+                Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
+                movie.init(prevLang, currLang);
+                movie.getMovieRepository().observe(getActivity(), response -> {
+                    progressBar.setVisibility(View.GONE);
+                    data = response.getMovieList();
+                    arrListMovie.addAll(data);
+                    setupRecyclerView();
+                    session.setPrevLang(getResources().getString(R.string.language));
+                });
+            } else {
                 progressBar.setVisibility(View.GONE);
-                List<MovieModel> data = response.getMovieList();
-                arrListMovie.addAll(data);
-                setupRecyclerView();
-            });
-        }else{
-            Toast.makeText(getContext(), "No internet connection!", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
+            }
         }
     }
 
@@ -87,25 +103,8 @@ public class MovieFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
-        movie.init(getActivity().getResources().getString(R.string.language));
-        movie.getMovieRepository().observe(getActivity(), response -> {
-            progressBar.setVisibility(View.GONE);
-            List<MovieModel> data = response.getMovieList();
-            arrListMovie.addAll(data);
-            listMovieAdapter = new ListMovieAdapter(getContext(), arrListMovie);
-            rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
-            rvMovies.setAdapter(listMovieAdapter);
-            rvMovies.setItemAnimator(new DefaultItemAnimator());
-            rvMovies.setNestedScrollingEnabled(true);
-
-            listMovieAdapter.setOnItemClickCallback(moviedata -> {
-                Intent intent = new Intent(getContext(), DetailMovieActivity.class);
-                intent.putExtra(GlobVar.EX_MOVIE, moviedata);
-                startActivity(intent);
-            });
-        });
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(GlobVar.EX_MOVIE,arrListMovie);
     }
 }

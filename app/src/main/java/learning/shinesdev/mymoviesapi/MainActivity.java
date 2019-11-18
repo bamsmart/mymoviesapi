@@ -14,14 +14,17 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
-import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.utils.SectionsPagerAdapter;
+import learning.shinesdev.mymoviesapi.utils.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        session = new SessionManager(getApplicationContext());
+
         setContentView(R.layout.activity_main);
         Objects.requireNonNull(getSupportActionBar()).setTitle("");
 
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.setting) {
+            session.setPrevLang(getResources().getString(R.string.language));
             Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(mIntent);
         }

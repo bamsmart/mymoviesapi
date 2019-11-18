@@ -66,6 +66,7 @@
       <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.MovieModel vote" />
       <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel vote_average" />
       <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.model.TVShowModel vote_count" />
+      <entry_point TYPE="field" FQNAME="learning.shinesdev.mymoviesapi.utils.SessionManager context" />
     </entry_points>
     <pattern value="learning.shinesdev.mymoviesapi.ExampleUnitTest" method="addition_isCorrect" />
     <pattern value="learning.shinesdev.mymoviesapi.DetailMovieActivity" />
@@ -96,6 +97,8 @@
     <pattern value="learning.shinesdev.mymoviesapi.ExampleInstrumentedTest" method="useAppContext" />
     <pattern value="learning.shinesdev.mymoviesapi.model.MovieModel" method="MovieModel" />
     <pattern value="learning.shinesdev.mymoviesapi.model.TVShowModel" method="TVShowModel" />
+    <pattern value="learning.shinesdev.mymoviesapi.utils.SessionManager" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.Movie" method="Movie" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />

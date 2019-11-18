@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 
+@SuppressWarnings("ALL")
 public class ListRandMovieAdapter extends RecyclerView.Adapter<ListRandMovieAdapter.MyViewHolder> {
     private final Context context;
     private final LayoutInflater inflater;

@@ -88,7 +88,11 @@ public class TVShowModel  extends ViewModel implements Parcelable {
 
     private TVShowModel(Parcel in) {
         id = in.readInt();
+        name = in.readString();
+        first_air_date = in.readString();
         overview = in.readString();
+        poster_path = in.readString();
+        vote_count = in.readInt();
     }
 
     @Override
@@ -99,7 +103,11 @@ public class TVShowModel  extends ViewModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int i) {
         dest.writeInt(id);
+        dest.writeString(name);
+        dest.writeString(first_air_date);
         dest.writeString(overview);
+        dest.writeString(poster_path);
+        dest.writeInt(vote_count);
     }
 
     public String getName() {
@@ -133,9 +141,9 @@ public class TVShowModel  extends ViewModel implements Parcelable {
     private MutableLiveData<TVShowModel> mutableLiveData;
 
     public void init(int id,String language){
-        /*if (mutableLiveData != null){
+        if (mutableLiveData != null){
             return;
-        }*/
+        }
         TVShowRepository tvShowRepository = TVShowRepository.getInstance();
         mutableLiveData = tvShowRepository.getDetail(id,language, ApiUtils.API_KEY);
     }

@@ -5,8 +5,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 
-import java.util.Objects;
-
 import learning.shinesdev.mymoviesapi.api.APIServiceTVShow;
 import learning.shinesdev.mymoviesapi.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.model.TVShow;
@@ -74,12 +72,6 @@ public class TVShowRepository {
         serviceTVShow.getDetails(id,lang,key).enqueue(new Callback<TVShowModel>() {
             @Override
             public void onResponse(@NonNull Call<TVShowModel> call, @NonNull Response<TVShowModel> response) {
-                try{
-                    Log.d("DATA NULL",""+ Objects.requireNonNull(response.errorBody()).string());
-                    Log.d("DATA NULL",""+response.headers().toString());
-                }catch (Exception ignored){
-
-                }
                 if (response.isSuccessful()){
                     tvShowData.setValue(response.body());
                 }

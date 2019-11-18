@@ -41,5 +41,6 @@
     <string name="lbl_image_desc">Description</string>
     <string name="lbl_rating">Rating</string>
     <string name="title">Title</string>
+    <string name="koneksi">No internet connection!</string>
 
 </resources>

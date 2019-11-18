@@ -64,7 +64,9 @@ import learning.shinesdev.mymoviesapi.model.TVShowModel;
             }
         }
 
+        @SuppressWarnings("EmptyMethod")
         public interface OnItemClickCallback {
+            @SuppressWarnings("WeakerAccess")
             void onItemClicked(TVShowModel data);
         }
         public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {

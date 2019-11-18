@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -30,6 +30,7 @@ import learning.shinesdev.mymoviesapi.adapter.ListRandTVShowAdapter;
 import learning.shinesdev.mymoviesapi.model.TVShow;
 import learning.shinesdev.mymoviesapi.model.TVShowCredits;
 import learning.shinesdev.mymoviesapi.model.TVShowModel;
+import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
 
 /**
@@ -39,6 +40,7 @@ import learning.shinesdev.mymoviesapi.utils.GlobVar;
 public class DetailTVShowFragment extends Fragment {
     private TVShow tvShow;
     private TVShowModel tvShowModel;
+    private TVShowModel tvShowdata;
     private TVShowCredits tvShowCredits;
     private RecyclerView recommTVShowRecyclerView;
     private ListRandTVShowAdapter recommTVShowAdapter;
@@ -51,6 +53,7 @@ public class DetailTVShowFragment extends Fragment {
     TextView txtStars;
     TextView txtVotes;
     ImageView imgThumb;
+    String strCredits = "";
 
     public DetailTVShowFragment() {
         // Required empty public constructor
@@ -59,13 +62,6 @@ public class DetailTVShowFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(getContext());
-        progressDialog.setMax(100);
-        progressDialog.setMessage("Loading....");
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.show();
-
         txtTitle = view.findViewById(R.id.txt_tv_title);
         txtYear = view.findViewById(R.id.txt_tv_year);
         txtSynopnsis = view.findViewById(R.id.txt_tv_synopsis);
@@ -74,37 +70,65 @@ public class DetailTVShowFragment extends Fragment {
         imgThumb = view.findViewById(R.id.img_tv_thumb);
         recommTVShowRecyclerView = view.findViewById(R.id.rv_detail_tv);
 
-        final TVShowModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_TV);
-        tvShowModel = ViewModelProviders.of(getActivity()).get(TVShowModel.class);
-        Log.d("LANGUAGE DI SINI ","");
-        tvShowModel.init((EX.getId()), getActivity().getResources().getString(R.string.language));
-        tvShowModel.getTVShowRepository().observe(getActivity(), response -> {
-            progressDialog.dismiss();
-            setupUI(response);
-        });
-        tvShow = ViewModelProviders.of(getActivity()).get(TVShow.class);
-        tvShow.initRecommendation(EX.getId(), getActivity().getResources().getString(R.string.language));
-        tvShow.getTVShowRepository().observe(getActivity(), response -> {
-            List<TVShowModel> data = response.getTVShowList();
-            recommTVShowArrList.addAll(data);
-            setupRecommRecyclerView();
-        });
+        if (savedInstanceState != null) {
+            // TV DATA
+            tvShowdata = savedInstanceState.getParcelable(GlobVar.EX_TV);
+            setupUI(tvShowdata);
 
-        tvShowCredits = ViewModelProviders.of(getActivity()).get(TVShowCredits.class);
-        tvShowCredits.init(EX.getId());
-        tvShowCredits.getTVShowRepository().observe(getActivity(), response -> {
-            List<TVShowCredits> credits = response.getCreditsList();
-            String strCredits = "";
-            if (!credits.isEmpty()) {
-                for (int i = 0; i < credits.size(); i++) {
-                    strCredits += credits.get(i).getName();
-                    if (i < (credits.size() - 1)) {
-                        strCredits += ", ";
-                    }
-                }
-            }
+            // LIST TV RECOMM
+            List<TVShowModel> movie_recomm = savedInstanceState.getParcelableArrayList(GlobVar.EX_TV_RECOMM);
+            recommTVShowArrList.addAll(movie_recomm);
+            setupRecommRecyclerView();
+
+            //TV CREDITS
+            strCredits = savedInstanceState.getString(GlobVar.EX_TV_CREDITS);
             txtStars.setText(strCredits);
-        });
+        }else {
+            ConnectionDetector conn = new ConnectionDetector(getContext());
+            if(conn.isConnectingToInternet()) {
+                final ProgressDialog progressDialog;
+                progressDialog = new ProgressDialog(getContext());
+                progressDialog.setMax(100);
+                progressDialog.setMessage("Loading....");
+                progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDialog.show();
+
+                final TVShowModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_TV);
+                tvShowModel = ViewModelProviders.of(getActivity()).get(TVShowModel.class);
+
+                tvShowModel.init((EX.getId()), getActivity().getResources().getString(R.string.language));
+                tvShowModel.getTVShowRepository().observe(getActivity(), response -> {
+                    progressDialog.dismiss();
+                    tvShowdata = response;
+                    setupUI(response);
+                });
+                tvShow = ViewModelProviders.of(getActivity()).get(TVShow.class);
+                tvShow.initRecommendation(EX.getId(), getActivity().getResources().getString(R.string.language));
+                tvShow.getTVShowRepository().observe(getActivity(), response -> {
+                    List<TVShowModel> data = response.getTVShowList();
+                    recommTVShowArrList.addAll(data);
+                    setupRecommRecyclerView();
+                });
+
+                tvShowCredits = ViewModelProviders.of(getActivity()).get(TVShowCredits.class);
+                tvShowCredits.init(EX.getId());
+                tvShowCredits.getTVShowRepository().observe(getActivity(), response -> {
+                    List<TVShowCredits> credits = response.getCreditsList();
+
+                    if (!credits.isEmpty()) {
+                        for (int i = 0; i < credits.size(); i++) {
+                            strCredits += credits.get(i).getName();
+                            if (i < (credits.size() - 1)) {
+                                strCredits += ", ";
+                            }
+                        }
+                    }
+                    txtStars.setText(strCredits);
+                });
+            }else{
+                Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     @Override
@@ -143,5 +167,14 @@ public class DetailTVShowFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(GlobVar.EX_TV, tvShowdata);
+        outState.putParcelableArrayList(GlobVar.EX_TV_RECOMM,recommTVShowArrList);
+        outState.putString(GlobVar.EX_TV_CREDITS,strCredits);
+
     }
 }
