@@ -1,4 +1,4 @@
-package learning.shinesdev.mymoviesapi.activity.home;
+package learning.shinesdev.mymoviesapi.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

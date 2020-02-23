@@ -16,7 +16,6 @@ import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
 public class MovieViewModel extends ViewModel {
-    private static final String TAG = "MovieViewModel";
     
     private MovieRepository movieRepository;
     private MutableLiveData<MovieModel> mutableLiveData;
@@ -53,7 +52,7 @@ public class MovieViewModel extends ViewModel {
     }
 
     public void initRecommendation(int id, String prevLang, String currLang) {
-        Log.d(TAG, "initRecommendation: "+currLang);
+
         if (recommLiveData != null && (prevLang.isEmpty() || prevLang.equals(currLang))) {
             return;
         }

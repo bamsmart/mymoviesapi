@@ -26,6 +26,7 @@ import java.util.Objects;
 
 import learning.shinesdev.mymoviesapi.activity.detail.DetailMovieActivity;
 import learning.shinesdev.mymoviesapi.R;
+import learning.shinesdev.mymoviesapi.adapter.MovieAdapter;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;

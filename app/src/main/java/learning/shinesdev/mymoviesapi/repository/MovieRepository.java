@@ -21,24 +21,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieRepository {
-    private static final String TAG = "MovieRepository";
     
     private static MovieRepository movieRepository;
+    private static APIServiceMovie serviceMovie;
+
     private MovieDao mMovieDao;
     private LiveData<List<MovieModel>> mAllFavoriteMovie;
 
     public static MovieRepository getInstance(){
         if (movieRepository == null){
             movieRepository = new MovieRepository();
+            serviceMovie = ApiUtils.getAPIServiceMovie();
         }
         return movieRepository;
     }
 
-    // Movie
-    private APIServiceMovie serviceMovie = null;
-    public MovieRepository(){
-        serviceMovie = ApiUtils.getAPIServiceMovie();
-    }
+    MovieRepository(){}
 
     public MovieRepository(@NonNull Application application){
         DatabaseConfig config = DatabaseConfig.getDatabase(application);
@@ -65,7 +63,7 @@ public class MovieRepository {
             }
             @Override
             public void onFailure(@NonNull Call<MovieModel> call, @NonNull Throwable t) {
-                //movieData.setValue(null);
+               t.printStackTrace();
             }
         });
 
@@ -76,11 +74,10 @@ public class MovieRepository {
     public MutableLiveData<MovieModel> getRecommendations(int id, String lang, String key){
         final MutableLiveData<MovieModel> movieData = new MutableLiveData<>();
 
-        Log.d(TAG, "getRecommendations: "+key);
         serviceMovie.getRecommendations(id,lang,key).enqueue(new Callback<MovieModel>() {
             @Override
             public void onResponse(@NonNull Call<MovieModel> call, @NonNull Response<MovieModel> response) {
-                Log.d(TAG, "onResponse: "+response.isSuccessful());
+
                 if (response.isSuccessful()){
                     movieData.setValue(response.body());
                 }
@@ -88,8 +85,6 @@ public class MovieRepository {
 
             @Override
             public void onFailure(@NonNull Call<MovieModel> call, @NonNull Throwable t) {
-                /*movieData.setValue(null);
-                Log.d("DATA MOVIE RECOM",""+t.getMessage());*/
                 t.printStackTrace();
             }
         });

@@ -23,6 +23,7 @@ import java.util.Objects;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import learning.shinesdev.mymoviesapi.R;
+import learning.shinesdev.mymoviesapi.adapter.FavoriteAdapter;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
