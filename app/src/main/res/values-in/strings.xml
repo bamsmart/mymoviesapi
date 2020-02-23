@@ -1,8 +1,8 @@
 <resources>
     <string name="language">id</string>
-    <string name="app_name">My Movies 2</string>
+    <string name="app_name">My Movies API</string>
     <string name="tab_text_1">Film</string>
-    <string name="tab_text_2">Serial TV</string>
+    <string name="tab_text_2">Movies Favorite</string>
     <string name="lbl_movie_title">Judul</string>
     <string name="lbl_movie_year">Tahun</string>
     <string name="txt_movie_rate">Rating</string>

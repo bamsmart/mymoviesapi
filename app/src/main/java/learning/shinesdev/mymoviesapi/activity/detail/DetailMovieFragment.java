@@ -1,4 +1,4 @@
-package learning.shinesdev.mymoviesapi;
+package learning.shinesdev.mymoviesapi.activity.detail;
 
 
 import android.app.ProgressDialog;
@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -26,8 +29,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import learning.shinesdev.mymoviesapi.adapter.ListRandMovieAdapter;
-import learning.shinesdev.mymoviesapi.model.Movie;
+import learning.shinesdev.mymoviesapi.R;
+import learning.shinesdev.mymoviesapi.adapter.ListRecommMovieAdapter;
+import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
+import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 import learning.shinesdev.mymoviesapi.model.MovieCredits;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
@@ -40,8 +45,7 @@ import learning.shinesdev.mymoviesapi.utils.SessionManager;
  */
 @SuppressWarnings("ALL")
 public class DetailMovieFragment extends Fragment {
-    private Movie movieBunddle;
-    private MovieModel movieModel;
+    private MovieViewModel viewModel;
     private MovieModel movieData;
     private MovieCredits movieCredits;
     private TextView txtTitle;
@@ -53,9 +57,10 @@ public class DetailMovieFragment extends Fragment {
     private TextView txtGross;
     private ImageView imgThumb;
     private RecyclerView recommMovieRecyclerView;
-    private ListRandMovieAdapter recommMovieAdapter;
+    private ListRecommMovieAdapter recommMovieAdapter;
     private ArrayList<MovieModel> recommMovieArrList = new ArrayList<>();
     private String strCredits = "";
+
     public DetailMovieFragment() {
         // Required empty public constructor
     }
@@ -82,7 +87,6 @@ public class DetailMovieFragment extends Fragment {
             // MOVIE DATA
             movieData = savedInstanceState.getParcelable(GlobVar.EX_MOVIE);
             setupUI(movieData);
-
             // LIST MOVIE RECOMM
             List<MovieModel> movie_recomm = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE_RECOMM);
             recommMovieArrList.addAll(movie_recomm);
@@ -100,19 +104,19 @@ public class DetailMovieFragment extends Fragment {
                 progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDialog.show();
 
-                movieModel = ViewModelProviders.of(getActivity()).get(MovieModel.class);
-                movieModel.init(EX.getId(),prevLang,currLang);
-                movieModel.getMovieRepository().observe(getActivity(), response -> {
+                viewModel = ViewModelProviders.of(getActivity()).get(MovieViewModel.class);
+
+                viewModel.getDetail(EX.getId(),prevLang,currLang);
+                viewModel.getMovie().observe(getActivity(), response -> {
                     progressDialog.dismiss();
                     movieData = response;
                     setupUI(response);
                 });
 
-                movieBunddle = ViewModelProviders.of(getActivity()).get(Movie.class);
-                movieBunddle.initRecommendation(EX.getId(), prevLang,currLang);
-                movieBunddle.getMovieRepository().observe(getActivity(), response -> {
-                    List<MovieModel> data = response.getMovieList();
-                    recommMovieArrList.addAll(data);
+                viewModel.init("en-US");
+                viewModel.initRecommendation(EX.getId(), prevLang,currLang);
+                viewModel.getRecommMovie().observe(getActivity(), response -> {
+                    recommMovieArrList.addAll(response.getMovieList());
                     setupRecommRecyclerView();
                 });
 
@@ -143,17 +147,19 @@ public class DetailMovieFragment extends Fragment {
             txtSynopnsis.setText(EX.getOverview());
             txtVotes.setText(String.valueOf(EXT.getVote()));
             txtGross.setText(String.valueOf(EXT.getRevenue()));
-            String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + EXT.getImage();
+            String img_url = ApiUtils.IMG_URL + EXT.getImage();
 
             Glide.with(getContext()).load(img_url)
                     .centerCrop()
                     .into(imgThumb);
         }
+
+        setHasOptionsMenu(true);
     }
 
     private void setupRecommRecyclerView() {
         if (recommMovieAdapter == null) {
-            recommMovieAdapter = new ListRandMovieAdapter(getContext(),recommMovieArrList);
+            recommMovieAdapter = new ListRecommMovieAdapter(getContext(),recommMovieArrList);
             recommMovieRecyclerView.setAdapter(recommMovieAdapter);
             recommMovieRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
             recommMovieRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -161,7 +167,7 @@ public class DetailMovieFragment extends Fragment {
         } else {
             recommMovieAdapter.notifyDataSetChanged();
         }
-        recommMovieAdapter.setOnItemClickCallback(new ListRandMovieAdapter.OnItemClickCallback() {
+        recommMovieAdapter.setOnItemClickCallback(new ListRecommMovieAdapter.OnItemClickCallback() {
             @Override
             public void onItemClicked(MovieModel data) {
                 Intent intent = new Intent(getContext(), DetailMovieActivity.class);
@@ -170,6 +176,7 @@ public class DetailMovieFragment extends Fragment {
             }
         });
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -183,7 +190,7 @@ public class DetailMovieFragment extends Fragment {
         txtSynopnsis.setText(data.getOverview());
         txtVotes.setText(String.valueOf(data.getVote()));
         txtGross.setText(String.valueOf(data.getRevenue()));
-        String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2" + data.getImage();
+        String img_url = ApiUtils.IMG_URL + data.getImage();
 
         Glide.with(getContext()).load(img_url)
                 .centerCrop()
@@ -196,5 +203,22 @@ public class DetailMovieFragment extends Fragment {
         outState.putParcelable(GlobVar.EX_MOVIE,movieData);
         outState.putString(GlobVar.EX_MOVIE_CREDITS,strCredits);
         outState.putParcelableArrayList(GlobVar.EX_MOVIE_RECOMM,recommMovieArrList);
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.favorite, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.favorite) {
+            viewModel.init(getActivity().getApplication());
+            viewModel.addToFavorite(movieData);
+            Toast.makeText(getContext(), "Movie ID " + movieData.getTitle() + " berhasil ditambahkan", Toast.LENGTH_LONG).show();
+        }
+        return true;
     }
 }

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import learning.shinesdev.mymoviesapi.api.ApiUtils;
+import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
 public class MovieCredits extends ViewModel {

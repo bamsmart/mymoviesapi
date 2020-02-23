@@ -1,4 +1,4 @@
-package learning.shinesdev.mymoviesapi;
+package learning.shinesdev.mymoviesapi.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,7 +6,10 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,8 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import learning.shinesdev.mymoviesapi.adapter.ListMovieAdapter;
-import learning.shinesdev.mymoviesapi.model.Movie;
+import learning.shinesdev.mymoviesapi.activity.detail.DetailMovieActivity;
+import learning.shinesdev.mymoviesapi.R;
+import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
@@ -31,7 +35,7 @@ import learning.shinesdev.mymoviesapi.utils.SessionManager;
 
 public class MovieFragment extends Fragment {
     private RecyclerView rvMovies;
-    private ListMovieAdapter listMovieAdapter;
+    private MovieAdapter listMovieAdapter;
     private final ArrayList<MovieModel> arrListMovie = new ArrayList<>();
     private List<MovieModel> data;
     private ProgressBar progressBar;
@@ -61,15 +65,20 @@ public class MovieFragment extends Fragment {
                 String prevLang = session.getPrevLang();
                 String currLang = Objects.requireNonNull(getActivity()).getResources().getString(R.string.language);
 
-                Movie movie = ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(Movie.class);
-                movie.init(prevLang, currLang);
-                movie.getMovieRepository().observe(getActivity(), response -> {
-                    progressBar.setVisibility(View.GONE);
-                    data = response.getMovieList();
-                    arrListMovie.addAll(data);
-                    setupRecyclerView();
-                    session.setPrevLang(getResources().getString(R.string.language));
+                MovieViewModel movie = ViewModelProviders.of(this).get(MovieViewModel.class);
+
+                movie.init("en-US");
+                movie.getMovie().observe(this, new Observer<MovieModel>() {
+                    @Override
+                    public void onChanged(MovieModel movieModel) {
+                        progressBar.setVisibility(View.GONE);
+                        data = movieModel.getMovieList();
+                        arrListMovie.addAll(data);
+                        setupRecyclerView();
+                        session.setPrevLang(getResources().getString(R.string.language));
+                    }
                 });
+
             } else {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
@@ -86,7 +95,7 @@ public class MovieFragment extends Fragment {
 
     private void setupRecyclerView() {
         if (listMovieAdapter == null) {
-            listMovieAdapter = new ListMovieAdapter(getContext(), arrListMovie);
+            listMovieAdapter = new MovieAdapter(getContext(), arrListMovie);
             rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
             rvMovies.setAdapter(listMovieAdapter);
             rvMovies.setItemAnimator(new DefaultItemAnimator());
@@ -99,7 +108,10 @@ public class MovieFragment extends Fragment {
             Intent intent = new Intent(getContext(), DetailMovieActivity.class);
             intent.putExtra(GlobVar.EX_MOVIE, data);
             startActivity(intent);
+
+
         });
+
     }
 
     @Override

@@ -1,13 +1,19 @@
 package learning.shinesdev.mymoviesapi.repository;
 
+import android.app.Application;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import learning.shinesdev.mymoviesapi.api.APIServiceMovie;
-import learning.shinesdev.mymoviesapi.api.ApiUtils;
-import learning.shinesdev.mymoviesapi.model.Movie;
+import java.util.List;
+
+import learning.shinesdev.mymoviesapi.data.api.APIServiceMovie;
+import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
+import learning.shinesdev.mymoviesapi.data.local.DatabaseConfig;
+import learning.shinesdev.mymoviesapi.data.local.MovieDao;
 import learning.shinesdev.mymoviesapi.model.MovieCredits;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 import retrofit2.Call;
@@ -15,53 +21,76 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MovieRepository {
-    private static MovieRepository newsRepository;
+    private static final String TAG = "MovieRepository";
+    
+    private static MovieRepository movieRepository;
+    private MovieDao mMovieDao;
+    private LiveData<List<MovieModel>> mAllFavoriteMovie;
 
     public static MovieRepository getInstance(){
-        if (newsRepository == null){
-            newsRepository = new MovieRepository();
+        if (movieRepository == null){
+            movieRepository = new MovieRepository();
         }
-        return newsRepository;
+        return movieRepository;
     }
 
-    private final APIServiceMovie serviceMovie;
-
-    private MovieRepository(){
+    // Movie
+    private APIServiceMovie serviceMovie = null;
+    public MovieRepository(){
         serviceMovie = ApiUtils.getAPIServiceMovie();
     }
 
-    public MutableLiveData<Movie> getPopular(String lang, String key){
-        final MutableLiveData<Movie> movieData = new MutableLiveData<>();
-        serviceMovie.getPopular(lang,key).enqueue(new Callback<Movie>() {
+    public MovieRepository(@NonNull Application application){
+        DatabaseConfig config = DatabaseConfig.getDatabase(application);
+
+        // init Movie Dao
+        mMovieDao = config.movieDao();
+
+        // get All Movie Data
+        mAllFavoriteMovie = mMovieDao.getAllFavoriteMovie();
+    }
+
+    public MutableLiveData<MovieModel> getPopular(String language, String api_key){
+
+        final MutableLiveData<MovieModel> movieData = new MutableLiveData<>();
+
+        serviceMovie.getPopular(language,api_key).enqueue(new Callback<MovieModel>() {
+
             @Override
-            public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
+            public void onResponse(@NonNull Call<MovieModel> call, @NonNull Response<MovieModel> response) {
+
                 if (response.isSuccessful()){
                     movieData.setValue(response.body());
                 }
             }
             @Override
-            public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
-                movieData.setValue(null);
-                Log.d("DATA NULL",""+t.getMessage());
+            public void onFailure(@NonNull Call<MovieModel> call, @NonNull Throwable t) {
+                //movieData.setValue(null);
             }
         });
+
         return movieData;
     }
 
-    public MutableLiveData<Movie> getRecommendations(int id, String lang,String key){
-        final MutableLiveData<Movie> movieData = new MutableLiveData<>();
-        serviceMovie.getRecommendations(id,lang,key).enqueue(new Callback<Movie>() {
+
+    public MutableLiveData<MovieModel> getRecommendations(int id, String lang, String key){
+        final MutableLiveData<MovieModel> movieData = new MutableLiveData<>();
+
+        Log.d(TAG, "getRecommendations: "+key);
+        serviceMovie.getRecommendations(id,lang,key).enqueue(new Callback<MovieModel>() {
             @Override
-            public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
+            public void onResponse(@NonNull Call<MovieModel> call, @NonNull Response<MovieModel> response) {
+                Log.d(TAG, "onResponse: "+response.isSuccessful());
                 if (response.isSuccessful()){
                     movieData.setValue(response.body());
-                    Log.d("",""+response.body());
                 }
             }
+
             @Override
-            public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
-                movieData.setValue(null);
-                Log.d("DATA MOVIE RECOM",""+t.getMessage());
+            public void onFailure(@NonNull Call<MovieModel> call, @NonNull Throwable t) {
+                /*movieData.setValue(null);
+                Log.d("DATA MOVIE RECOM",""+t.getMessage());*/
+                t.printStackTrace();
             }
         });
         return movieData;
@@ -85,9 +114,61 @@ public class MovieRepository {
         return movieData;
     }
 
+    public LiveData<List<MovieModel>> getFavorite() {
+        return mAllFavoriteMovie;
+    }
+
+    public void addToFavorite(MovieModel movie){
+        new AddMovie().execute(movie);
+    }
+
+    //Async task to add movie
+    public class AddMovie extends AsyncTask<MovieModel, Void, Void> {
+        @Override
+        protected Void doInBackground(MovieModel... movie) {
+            mMovieDao.insertMovie(movie[0]);
+            return null;
+        }
+    }
+
+    public void deleteFromFavorite(MovieModel movie){
+       new DeleteMovie().execute(movie);
+    }
+
+    //Async task to delete movie
+    public class DeleteMovie extends AsyncTask<MovieModel, Void, Void> {
+        @Override
+        protected Void doInBackground(MovieModel... movie) {
+            mMovieDao.deleteMovie(movie[0]);
+            return null;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public MutableLiveData<MovieCredits> getCredits(int id, String key){
         final MutableLiveData<MovieCredits> movieCredit = new MutableLiveData<>();
-        serviceMovie.getCredits(id,key).enqueue(new Callback<MovieCredits>() {
+        /*serviceMovie.getCredits(id,key).enqueue(new Callback<MovieCredits>() {
             @Override
             public void onResponse(@NonNull Call<MovieCredits> call, @NonNull Response<MovieCredits> response) {
                 if(response.isSuccessful()){
@@ -99,7 +180,11 @@ public class MovieRepository {
             public void onFailure(@NonNull Call<MovieCredits> call, @NonNull Throwable t) {
                 Log.d("ON Failure",t.getMessage());
             }
-        });
+        });*/
         return movieCredit;
     }
+
+
+
+
 }

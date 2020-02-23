@@ -18,13 +18,13 @@ import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.model.MovieModel;
 
 @SuppressWarnings("ALL")
-public class ListRandMovieAdapter extends RecyclerView.Adapter<ListRandMovieAdapter.MyViewHolder> {
+public class ListRecommMovieAdapter extends RecyclerView.Adapter<ListRecommMovieAdapter.MyViewHolder> {
     private final Context context;
     private final LayoutInflater inflater;
     private final ArrayList<MovieModel> movieList;
     private OnItemClickCallback onItemClickCallbacks;
 
-    public ListRandMovieAdapter(Context ctx, ArrayList<MovieModel> list){
+    public ListRecommMovieAdapter(Context ctx, ArrayList<MovieModel> list){
         inflater = LayoutInflater.from(ctx);
         this.context = ctx;
         this.movieList = list;
@@ -32,14 +32,14 @@ public class ListRandMovieAdapter extends RecyclerView.Adapter<ListRandMovieAdap
 
     @NonNull
     @Override
-    public ListRandMovieAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ListRecommMovieAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = inflater.inflate(R.layout.item_list_detail_random, parent, false);
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ListRandMovieAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(final ListRecommMovieAdapter.MyViewHolder holder, int position) {
         MovieModel movieModel = movieList.get(position);
         holder.time.setText(movieModel.getTitle());
         String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+movieModel.getImage();

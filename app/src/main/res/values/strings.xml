@@ -2,7 +2,7 @@
     <string name="language">en-US</string>
     <string name="app_name">My Movies API</string>
     <string name="tab_text_1">Movies</string>
-    <string name="tab_text_2">TV Shows</string>
+    <string name="tab_text_2">Movies Favorite</string>
     <string name="lbl_movie_title">Title</string>
     <string name="lbl_movie_year">Year</string>
     <string name="txt_movie_rate">Rate </string>
@@ -42,5 +42,7 @@
     <string name="lbl_rating">Rating</string>
     <string name="title">Title</string>
     <string name="koneksi">No internet connection!</string>
+
+    <string name="favorite" translatable="false">Favorite</string>
 
 </resources>

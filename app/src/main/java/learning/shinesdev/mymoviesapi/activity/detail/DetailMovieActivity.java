@@ -1,6 +1,8 @@
-package learning.shinesdev.mymoviesapi;
+package learning.shinesdev.mymoviesapi.activity.detail;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -9,9 +11,9 @@ import androidx.fragment.app.FragmentManager;
 import java.util.Objects;
 
 import learning.shinesdev.mymoviesapi.R;
+import learning.shinesdev.mymoviesapi.activity.home.MainActivity;
 
 public class DetailMovieActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,16 @@ public class DetailMovieActivity extends AppCompatActivity {
                     .add(R.id.frame_container_movie, detailMovieFragment, DetailMovieFragment.class.getSimpleName())
                     .commit();
         }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            Intent intent = new Intent(DetailMovieActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }

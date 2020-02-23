@@ -1,4 +1,4 @@
-package learning.shinesdev.mymoviesapi;
+package learning.shinesdev.mymoviesapi.activity.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.Objects;
 
+import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.utils.SectionsPagerAdapter;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
 

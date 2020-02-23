@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import learning.shinesdev.mymoviesapi.MovieFragment;
+import learning.shinesdev.mymoviesapi.activity.home.MovieFragment;
 import learning.shinesdev.mymoviesapi.R;
-import learning.shinesdev.mymoviesapi.TVShowFragment;
+import learning.shinesdev.mymoviesapi.activity.home.FavoriteFragment;
 
 @SuppressWarnings("ConstantConditions")
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
@@ -38,7 +38,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 fragment = new MovieFragment();
                 break;
             case 1:
-                fragment = new TVShowFragment();
+                fragment = new FavoriteFragment();
                 break;
         }
         return fragment;
