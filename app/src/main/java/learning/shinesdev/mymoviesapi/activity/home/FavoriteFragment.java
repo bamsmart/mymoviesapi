@@ -90,15 +90,16 @@ public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItem
     @Override
     public void onItemClick(int position) {
         new SweetAlertDialog(Objects.requireNonNull(getContext()), SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Apakah anda yakin ingin menghapus data ini?")
-                .setContentText("Data yang akan dihapus tidak dapat dikembalikan")
-                .setConfirmText("Ya")
+                .setTitleText(getActivity().getResources().getString(R.string.lbl_delete_confirm))
+                .setContentText(getActivity().getResources().getString(R.string.lbl_delete_desc))
+                .setConfirmText(getActivity().getResources().getString(R.string.lbl_confirm_yes))
                 .setConfirmClickListener(sDialog -> {
                     sDialog.dismissWithAnimation();
 
                     viewModel.init(getActivity().getApplication());
                     viewModel.deleteFromFavorite(mMovie.get(position));
-                    Toast.makeText(getContext(), "Movie " + mMovie.get(position).getTitle() + " Deleted", Toast.LENGTH_LONG).show();
+
+                    Toast.makeText(getContext(), getActivity().getResources().getString(R.string.lbl_movie_gross) + mMovie.get(position).getTitle() + " Deleted", Toast.LENGTH_LONG).show();
                 })
                 .setCancelButton(getResources().getString(R.string.dialog_cancel), SweetAlertDialog::dismissWithAnimation)
                 .show();

@@ -11,13 +11,6 @@
     <string name="lbl_movie_votes">Suara</string>
     <string name="lbl_movie_gross">Pendapatan</string>
 
-    <string name="lbl_tv_title">Judul</string>
-    <string name="lbl_tv_year">Tahun</string>
-    <string name="lbl_tv_genre">Action, Thriller</string>
-    <string name="lbl_tv_overview">Ikhtisar</string>
-    <string name="lbl_tv_stars">Bintang</string>
-    <string name="lbl_tv_votes">Suara</string>
-
     <string name="txt_movie_title">Judul</string>
     <string name="txt_movie_synopsis">As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.</string>
     <string name="txt_movie_stars">Robert Downey Jr.</string>
@@ -40,7 +33,13 @@
     <string name="lbl_header_tv_detail">Detail TV Serial </string>
     <string name="lbl_image_desc">Deskripsi</string>
     <string name="lbl_rating">Rating</string>
-    <string name="title">Judul</string>
-    <string name="koneksi">Tidak ada koneksi internet!</string>
+
+    <string name="lbl_title">Judul</string>
+    <string name="lbl_connection_info">Tidak ada koneksi internet!</string>
+    <string name="lbl_favorite">Favorit</string>
+    <string name="lbl_delete_confirm">Apakah anda yakin ingin menghapus data ini?</string>
+    <string name="lbl_delete_desc">Data yang akan dihapus tidak dapat dikembalikan!</string>
+    <string name="lbl_confirm_yes">Ya</string>
+    <string name="lbl_confirm_no">Tidak</string>
 
 </resources>
