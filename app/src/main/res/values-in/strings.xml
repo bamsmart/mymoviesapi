@@ -19,20 +19,12 @@
 
 
     <string name="description">Deskrikpsi</string>
-    <string name="separator"> | </string>
-    <string name="lbl_stars">Bintang : </string>
     <string name="votes">Suara: </string>
-    <string name="jacob_cedergren">Jacob Cedergren</string>
-    <string name="r">R</string>
     <string name="_31_523">31,523</string>
     <string name="todo">TODO</string>
     <string name="_7_5">7.5</string>
-    <string name="_85_min">85 min</string>
 
     <string name="lbl_header_movie_detail">Detail Film</string>
-    <string name="lbl_header_tv_detail">Detail TV Serial </string>
-    <string name="lbl_image_desc">Deskripsi</string>
-    <string name="lbl_rating">Rating</string>
 
     <string name="lbl_title">Judul</string>
     <string name="lbl_connection_info">Tidak ada koneksi internet!</string>
@@ -40,6 +32,5 @@
     <string name="lbl_delete_confirm">Apakah anda yakin ingin menghapus data ini?</string>
     <string name="lbl_delete_desc">Data yang akan dihapus tidak dapat dikembalikan!</string>
     <string name="lbl_confirm_yes">Ya</string>
-    <string name="lbl_confirm_no">Tidak</string>
 
 </resources>

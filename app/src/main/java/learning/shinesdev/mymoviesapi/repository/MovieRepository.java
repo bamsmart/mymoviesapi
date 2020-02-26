@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import learning.shinesdev.mymoviesapi.data.api.APIServiceMovie;
@@ -21,12 +22,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressWarnings("ALL")
 public class MovieRepository {
     
     private static MovieRepository movieRepository;
     private static APIServiceMovie serviceMovie;
 
-    private MovieDao mMovieDao;
+    private static MovieDao mMovieDao;
     private LiveData<List<MovieEntity>> mAllFavoriteMovie;
 
     public static MovieRepository getInstance(){
@@ -37,7 +39,7 @@ public class MovieRepository {
         return movieRepository;
     }
 
-    MovieRepository(){}
+    private MovieRepository(){}
 
     public MovieRepository(@NonNull Application application){
         AppDatabase config = AppDatabase.getDatabase(application);
@@ -115,11 +117,17 @@ public class MovieRepository {
     }
 
     public void addToFavorite(MovieEntity movie){
-        new AddMovie().execute(movie);
+        new AddMovie(this).execute(movie);
     }
 
     //Async task to add movie
-    public class AddMovie extends AsyncTask<MovieEntity, Void, Void> {
+    private static class AddMovie extends AsyncTask<MovieEntity, Void, Void> {
+
+        // only retain a weak reference to the activity
+        AddMovie(MovieRepository context) {
+            WeakReference<MovieRepository> activityReference = new WeakReference<>(context);
+        }
+
         @Override
         protected Void doInBackground(MovieEntity... movie) {
             mMovieDao.insertMovie(movie[0]);
@@ -128,11 +136,17 @@ public class MovieRepository {
     }
 
     public void deleteFromFavorite(MovieEntity movie){
-       new DeleteMovie().execute(movie);
+       new DeleteMovie(this).execute(movie);
     }
 
     //Async task to delete movie
-    public class DeleteMovie extends AsyncTask<MovieEntity, Void, Void> {
+    private static class DeleteMovie extends AsyncTask<MovieEntity, Void, Void> {
+
+        // only retain a weak reference to the activity
+        DeleteMovie(MovieRepository context) {
+            WeakReference<MovieRepository> activityReference = new WeakReference<>(context);
+        }
+
         @Override
         protected Void doInBackground(MovieEntity... movie) {
             mMovieDao.deleteMovie(movie[0]);
@@ -162,7 +176,7 @@ public class MovieRepository {
 
 
 
-    public MutableLiveData<MovieCredits> getCredits(int id, String key){
+    public MutableLiveData<MovieCredits> getCredits(){
         final MutableLiveData<MovieCredits> movieCredit = new MutableLiveData<>();
         /*serviceMovie.getCredits(id,key).enqueue(new Callback<MovieCredits>() {
             @Override

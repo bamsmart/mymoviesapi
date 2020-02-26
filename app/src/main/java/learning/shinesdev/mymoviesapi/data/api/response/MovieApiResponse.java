@@ -7,6 +7,7 @@ import java.util.List;
 
 import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
+@SuppressWarnings("ALL")
 public class MovieApiResponse {
 
     public MovieApiResponse() {

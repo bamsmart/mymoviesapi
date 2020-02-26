@@ -11,6 +11,7 @@ import androidx.room.Update;
 import java.util.List;
 import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
+@SuppressWarnings("unused")
 @Dao
 public interface MovieDao {
     @Query("SELECT * FROM MovieEntity")
@@ -27,7 +28,7 @@ public interface MovieDao {
     void deleteMovie(MovieEntity movie);
 
     @Delete
-    public void deleteAll(MovieEntity movie1, MovieEntity movie2);
+    void deleteAll(MovieEntity movie1, MovieEntity movie2);
 
     @Query("SELECT * FROM MovieEntity WHERE title LIKE :keyTitle ")
     MovieEntity findByName(String keyTitle);

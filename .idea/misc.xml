@@ -99,6 +99,30 @@
     <pattern value="learning.shinesdev.mymoviesapi.model.TVShowModel" method="TVShowModel" />
     <pattern value="learning.shinesdev.mymoviesapi.utils.SessionManager" />
     <pattern value="learning.shinesdev.mymoviesapi.model.Movie" method="Movie" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.local.AppDatabase" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.local.AppDatabase" method="closeDatabase" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="getPage" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="getTotalPages" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="getTotalResults" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="MovieApiResponse" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="setPage" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="setResults" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="setTotalPages" />
+    <pattern value="learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse" method="setTotalResults" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="getBudget" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="getPopularity" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setBudget" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setDate" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setId" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setImage" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setOverview" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setPopularity" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setRating" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setRevenue" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setTitle" />
+    <pattern value="learning.shinesdev.mymoviesapi.model.MovieEntity" method="setVote" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />

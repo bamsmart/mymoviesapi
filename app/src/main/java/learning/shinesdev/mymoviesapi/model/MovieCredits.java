@@ -9,9 +9,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.repository.MovieRepository;
 
+@SuppressWarnings("ALL")
 public class MovieCredits extends ViewModel {
     @SerializedName("id")
     @Expose
@@ -51,7 +51,7 @@ public class MovieCredits extends ViewModel {
             return;
         }
         MovieRepository movieRepository = MovieRepository.getInstance();
-        mutableLiveData = movieRepository.getCredits(id, ApiUtils.API_KEY);
+        mutableLiveData = movieRepository.getCredits();
     }
 
     public LiveData<MovieCredits> getMovieRepository() {

@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -27,7 +26,6 @@ import java.util.Objects;
 import learning.shinesdev.mymoviesapi.activity.detail.DetailMovieActivity;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.MovieAdapter;
-import learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 import learning.shinesdev.mymoviesapi.model.MovieEntity;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
@@ -35,6 +33,7 @@ import learning.shinesdev.mymoviesapi.utils.GlobVar;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
 
 
+@SuppressWarnings("ALL")
 public class MovieFragment extends Fragment {
     private RecyclerView rvMovies;
     private MovieAdapter listMovieAdapter;
@@ -70,15 +69,12 @@ public class MovieFragment extends Fragment {
                 MovieViewModel movie = ViewModelProviders.of(this).get(MovieViewModel.class);
 
                 movie.init("en-US");
-                movie.getListMovie().observe(this, new Observer<MovieApiResponse>() {
-                    @Override
-                    public void onChanged(MovieApiResponse movie) {
-                        progressBar.setVisibility(View.GONE);
-                        data = movie.getResults();
-                        arrListMovie.addAll(data);
-                        setupRecyclerView();
-                        session.setPrevLang(getResources().getString(R.string.language));
-                    }
+                movie.getListMovie().observe(this, movie1 -> {
+                    progressBar.setVisibility(View.GONE);
+                    data = movie1.getResults();
+                    arrListMovie.addAll(data);
+                    setupRecyclerView();
+                    session.setPrevLang(getResources().getString(R.string.language));
                 });
 
             } else {

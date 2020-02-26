@@ -6,7 +6,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,11 +31,11 @@ import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 /**
  * A simple {@link Fragment} subclass.
  */
+@SuppressWarnings("ALL")
 public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItemClickListener {
 
     private List<MovieEntity> mMovie = new ArrayList<>();
 
-    private RecyclerView rvMovies;
     private FavoriteAdapter listMovieAdapter;
     private ProgressBar progressBar;
     private MovieViewModel viewModel;
@@ -52,7 +51,7 @@ public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItem
         SessionManager session = new SessionManager(Objects.requireNonNull(getContext()));
         progressBar = view.findViewById(R.id.progress_movie);
 
-        rvMovies = view.findViewById(R.id.rv_movies);
+        RecyclerView rvMovies = view.findViewById(R.id.rv_movies);
         rvMovies.setLayoutManager(new LinearLayoutManager(getContext()));
         rvMovies.setHasFixedSize(true);
 
@@ -62,14 +61,11 @@ public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItem
         listMovieAdapter.setOnItemClickListener(this);
 
         viewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
-        viewModel.init(getActivity().getApplication());
-        viewModel.getFavoriteMovie().observe(this, new Observer<List<MovieEntity>>() {
-            @Override
-            public void onChanged(List<MovieEntity> movie) {
-                progressBar.setVisibility(View.GONE);
-                listMovieAdapter.setData(movie);
-                mMovie = movie;
-            }
+        viewModel.init(Objects.requireNonNull(getActivity()).getApplication());
+        viewModel.getFavoriteMovie().observe(this, movie -> {
+            progressBar.setVisibility(View.GONE);
+            listMovieAdapter.setData(movie);
+            mMovie = movie;
         });
     }
 
@@ -90,7 +86,7 @@ public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItem
     @Override
     public void onItemClick(int position) {
         new SweetAlertDialog(Objects.requireNonNull(getContext()), SweetAlertDialog.WARNING_TYPE)
-                .setTitleText(getActivity().getResources().getString(R.string.lbl_delete_confirm))
+                .setTitleText(Objects.requireNonNull(getActivity()).getResources().getString(R.string.lbl_delete_confirm))
                 .setContentText(getActivity().getResources().getString(R.string.lbl_delete_desc))
                 .setConfirmText(getActivity().getResources().getString(R.string.lbl_confirm_yes))
                 .setConfirmClickListener(sDialog -> {

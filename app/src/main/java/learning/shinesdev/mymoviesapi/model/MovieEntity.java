@@ -10,6 +10,7 @@ import androidx.room.Ignore;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+@SuppressWarnings("ALL")
 @Entity(primaryKeys = ("id"))
 public class MovieEntity implements Parcelable {
 
@@ -92,6 +93,7 @@ public class MovieEntity implements Parcelable {
         return image;
     }
 
+    @SuppressWarnings("unused")
     public void setImage(String image) {
         this.image = image;
     }
@@ -100,6 +102,7 @@ public class MovieEntity implements Parcelable {
         return title;
     }
 
+    @SuppressWarnings("unused")
     public void setTitle(String title) {
         this.title = title;
     }
@@ -108,6 +111,7 @@ public class MovieEntity implements Parcelable {
         return vote;
     }
 
+    @SuppressWarnings("unused")
     public void setVote(int vote) {
         this.vote = vote;
     }
@@ -116,6 +120,7 @@ public class MovieEntity implements Parcelable {
         return id;
     }
 
+    @SuppressWarnings("unused")
     public void setId(int id) {
         this.id = id;
     }
@@ -124,6 +129,7 @@ public class MovieEntity implements Parcelable {
         return rating;
     }
 
+    @SuppressWarnings("unused")
     public void setRating(double rating) {
         this.rating = rating;
     }
@@ -132,6 +138,7 @@ public class MovieEntity implements Parcelable {
         return overview;
     }
 
+    @SuppressWarnings("unused")
     public void setOverview(String overview) {
         this.overview = overview;
     }
@@ -140,6 +147,7 @@ public class MovieEntity implements Parcelable {
         return date;
     }
 
+    @SuppressWarnings("unused")
     public void setDate(String date) {
         this.date = date;
     }
@@ -164,22 +172,27 @@ public class MovieEntity implements Parcelable {
         return revenue;
     }
 
+    @SuppressWarnings("unused")
     public void setRevenue(int revenue) {
         this.revenue = revenue;
     }
 
+    @SuppressWarnings("unused")
     public double getPopularity() {
         return popularity;
     }
 
+    @SuppressWarnings("unused")
     public void setPopularity(double popularity) {
         this.popularity = popularity;
     }
 
+    @SuppressWarnings("unused")
     public String getBudget() {
         return budget;
     }
 
+    @SuppressWarnings("unused")
     public void setBudget(String budget) {
         this.budget = budget;
     }

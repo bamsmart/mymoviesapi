@@ -21,20 +21,12 @@
 
 
     <string name="description">description</string>
-    <string name="separator"> | </string>
-    <string name="lbl_stars">Stars : </string>
     <string name="votes">Votes: </string>
-    <string name="jacob_cedergren">Jacob Cedergren</string>
-    <string name="r">R</string>
     <string name="_31_523">31,523</string>
     <string name="todo">TODO</string>
     <string name="_7_5">7.5</string>
-    <string name="_85_min">85 min</string>
 
     <string name="lbl_header_movie_detail">Movie Detail </string>
-    <string name="lbl_header_tv_detail">TV Show Detail </string>
-    <string name="lbl_image_desc">Description</string>
-    <string name="lbl_rating">Rating</string>
 
     <string name="lbl_title">Title</string>
     <string name="lbl_connection_info">No internet connection!</string>
@@ -42,6 +34,5 @@
     <string name="lbl_delete_confirm">Apakah anda yakin ingin menghapus data ini?</string>
     <string name="lbl_delete_desc">Data yang akan dihapus tidak dapat dikembalikan!</string>
     <string name="lbl_confirm_yes">Yes</string>
-    <string name="lbl_confirm_no">No</string>
 
 </resources>
