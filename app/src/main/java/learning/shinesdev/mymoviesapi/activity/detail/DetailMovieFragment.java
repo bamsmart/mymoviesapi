@@ -73,7 +73,7 @@ public class DetailMovieFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // implement bind ButterKnife
-        ButterKnife.bind(getActivity());
+        ButterKnife.bind(this, view);
 
         final MovieEntity EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
         SessionManager session = new SessionManager(getContext());
