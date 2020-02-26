@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.ListRecommMovieAdapter;
 import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
@@ -48,15 +50,16 @@ public class DetailMovieFragment extends Fragment {
     private MovieViewModel viewModel;
     private MovieEntity movieData;
     private MovieCredits movieCredits;
-    private TextView txtTitle;
-    private TextView txtYear;
-    private TextView txtSynopnsis;
-    private TextView txtDirector;
-    private TextView txtStars;
-    private TextView txtVotes;
-    private TextView txtGross;
-    private ImageView imgThumb;
-    private RecyclerView recommMovieRecyclerView;
+
+    @BindView(R.id.txt_movie_title) TextView txtTitle;
+    @BindView(R.id.txt_movie_year) TextView txtYear;
+    @BindView(R.id.txt_movie_synopsis) TextView txtSynopnsis;
+    @BindView(R.id.txt_movie_stars) TextView txtStars;
+    @BindView(R.id.txt_movie_votes) TextView txtVotes;
+    @BindView(R.id.txt_movie_gross) TextView txtGross;
+    @BindView(R.id.img_movie_thumb) ImageView imgThumb;
+    @BindView(R.id.rv_detail_movie) RecyclerView recommMovieRecyclerView;
+
     private ListRecommMovieAdapter recommMovieAdapter;
     private ArrayList<MovieEntity> recommMovieArrList = new ArrayList<>();
     private String strCredits = "";
@@ -69,14 +72,8 @@ public class DetailMovieFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        txtTitle = view.findViewById(R.id.txt_movie_title);
-        txtYear = view.findViewById(R.id.txt_movie_year);
-        txtSynopnsis = view.findViewById(R.id.txt_movie_synopsis);
-        txtStars = view.findViewById(R.id.txt_movie_stars);
-        txtVotes = view.findViewById(R.id.txt_movie_votes);
-        txtGross = view.findViewById(R.id.txt_movie_gross);
-        imgThumb = view.findViewById(R.id.img_movie_thumb);
-        recommMovieRecyclerView = view.findViewById(R.id.rv_detail_movie);
+        // implement bind ButterKnife
+        ButterKnife.bind(getActivity());
 
         final MovieEntity EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
         SessionManager session = new SessionManager(getContext());

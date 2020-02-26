@@ -15,6 +15,8 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
@@ -82,23 +84,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MovieH
     }
 
     class MovieHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private final TextView
-                txtTitle,
-                txtYear,
-                txtRate,
-                txtOverview,
-                txtVotes;
-        private final ImageView imgThumb;
+        @BindView(R.id.txt_movie_title) TextView txtTitle;
+        @BindView(R.id.txt_movie_year) TextView txtYear;
+        @BindView(R.id.txt_movie_rating) TextView txtRate;
+        @BindView(R.id.txt_movie_synopsis) TextView txtOverview;
+        @BindView(R.id.txt_movie_votes) TextView txtVotes;
+        @BindView(R.id.img_movie_thumb) ImageView imgThumb;
 
         MovieHolder(View itemView) {
             super(itemView);
 
-            txtTitle = itemView.findViewById(R.id.txt_movie_title);
-            txtYear = itemView.findViewById(R.id.txt_movie_year);
-            txtRate = itemView.findViewById(R.id.txt_movie_rating);
-            txtOverview = itemView.findViewById(R.id.txt_movie_sinopsis);
-            txtVotes = itemView.findViewById(R.id.txt_movie_votes);
-            imgThumb = itemView.findViewById(R.id.img_movie_thumb);
+            // implement ButterKnife
+            ButterKnife.bind(this, itemView);
 
             itemView.setOnClickListener(this);
         }
