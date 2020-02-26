@@ -27,8 +27,9 @@ import java.util.Objects;
 import learning.shinesdev.mymoviesapi.activity.detail.DetailMovieActivity;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.MovieAdapter;
+import learning.shinesdev.mymoviesapi.data.api.response.MovieApiResponse;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
@@ -37,8 +38,8 @@ import learning.shinesdev.mymoviesapi.utils.SessionManager;
 public class MovieFragment extends Fragment {
     private RecyclerView rvMovies;
     private MovieAdapter listMovieAdapter;
-    private final ArrayList<MovieModel> arrListMovie = new ArrayList<>();
-    private List<MovieModel> data;
+    private final ArrayList<MovieEntity> arrListMovie = new ArrayList<>();
+    private List<MovieEntity> data;
     private ProgressBar progressBar;
 
     @Override
@@ -56,7 +57,7 @@ public class MovieFragment extends Fragment {
 
         if (savedInstanceState != null) {
             progressBar.setVisibility(View.GONE);
-            List<MovieModel> exdata = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE);
+            List<MovieEntity> exdata = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE);
             arrListMovie.addAll(Objects.requireNonNull(exdata));
             setupRecyclerView();
             session.setPrevLang(getResources().getString(R.string.language));
@@ -69,11 +70,11 @@ public class MovieFragment extends Fragment {
                 MovieViewModel movie = ViewModelProviders.of(this).get(MovieViewModel.class);
 
                 movie.init("en-US");
-                movie.getMovie().observe(this, new Observer<MovieModel>() {
+                movie.getListMovie().observe(this, new Observer<MovieApiResponse>() {
                     @Override
-                    public void onChanged(MovieModel movieModel) {
+                    public void onChanged(MovieApiResponse movie) {
                         progressBar.setVisibility(View.GONE);
-                        data = movieModel.getMovieList();
+                        data = movie.getResults();
                         arrListMovie.addAll(data);
                         setupRecyclerView();
                         session.setPrevLang(getResources().getString(R.string.language));
@@ -82,7 +83,7 @@ public class MovieFragment extends Fragment {
 
             } else {
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.lbl_connection_info, Toast.LENGTH_LONG).show();
             }
         }
     }

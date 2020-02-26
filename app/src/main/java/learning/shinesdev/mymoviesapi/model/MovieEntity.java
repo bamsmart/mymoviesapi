@@ -6,39 +6,27 @@ import android.os.Parcelable;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+@Entity(primaryKeys = ("id"))
+public class MovieEntity implements Parcelable {
 
-@Entity
-public class MovieModel implements Parcelable {
-
-    public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
+    public static final Creator<MovieEntity> CREATOR = new Creator<MovieEntity>() {
         @Override
-        public MovieModel createFromParcel(Parcel in) {
-            return new MovieModel(in);
+        public MovieEntity createFromParcel(Parcel in) {
+            return new MovieEntity(in);
         }
 
         @Override
-        public MovieModel[] newArray(int size) {
-            return new MovieModel[size];
+        public MovieEntity[] newArray(int size) {
+            return new MovieEntity[size];
         }
     };
 
-    @PrimaryKey(autoGenerate = true)
-    int uuid;
-
-    @SerializedName("results")
-    @Expose
-    @Ignore
-    private List<MovieModel> movieList;
-
     @SerializedName("popularity")
     @Expose
-    @Ignore
     private double popularity;
 
     @SerializedName("vote_count")
@@ -66,7 +54,6 @@ public class MovieModel implements Parcelable {
 
     @SerializedName("vote_average")
     @Expose
-    @Ignore
     private double rating;
 
     @SerializedName("overview")
@@ -88,10 +75,10 @@ public class MovieModel implements Parcelable {
     @Ignore
     private String budget;
 
-    public MovieModel() {
+    public MovieEntity() {
     }
 
-    private MovieModel(Parcel in) {
+    private MovieEntity(Parcel in) {
         id = in.readInt();
         title = in.readString();
         date = in.readString();
@@ -99,18 +86,6 @@ public class MovieModel implements Parcelable {
         image = in.readString();
         vote = in.readInt();
         revenue = in.readInt();
-    }
-
-    public List<MovieModel> getMovieList() {
-        return movieList;
-    }
-
-    public int getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(int uuid) {
-        this.uuid = uuid;
     }
 
     public String getImage() {
@@ -149,6 +124,10 @@ public class MovieModel implements Parcelable {
         return rating;
     }
 
+    public void setRating(double rating) {
+        this.rating = rating;
+    }
+
     public String getOverview() {
         return overview;
     }
@@ -170,10 +149,6 @@ public class MovieModel implements Parcelable {
         return 0;
     }
 
-    public void setPopularity(double popularity) {
-        this.popularity = popularity;
-    }
-
     @Override
     public void writeToParcel(Parcel dest, int i) {
         dest.writeInt(id);
@@ -193,6 +168,19 @@ public class MovieModel implements Parcelable {
         this.revenue = revenue;
     }
 
+    public double getPopularity() {
+        return popularity;
+    }
 
+    public void setPopularity(double popularity) {
+        this.popularity = popularity;
+    }
 
+    public String getBudget() {
+        return budget;
+    }
+
+    public void setBudget(String budget) {
+        this.budget = budget;
+    }
 }

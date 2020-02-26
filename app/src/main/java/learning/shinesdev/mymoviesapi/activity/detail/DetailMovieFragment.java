@@ -34,7 +34,7 @@ import learning.shinesdev.mymoviesapi.adapter.ListRecommMovieAdapter;
 import learning.shinesdev.mymoviesapi.data.api.ApiUtils;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 import learning.shinesdev.mymoviesapi.model.MovieCredits;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 import learning.shinesdev.mymoviesapi.utils.ConnectionDetector;
 import learning.shinesdev.mymoviesapi.utils.GlobVar;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
@@ -46,7 +46,7 @@ import learning.shinesdev.mymoviesapi.utils.SessionManager;
 @SuppressWarnings("ALL")
 public class DetailMovieFragment extends Fragment {
     private MovieViewModel viewModel;
-    private MovieModel movieData;
+    private MovieEntity movieData;
     private MovieCredits movieCredits;
     private TextView txtTitle;
     private TextView txtYear;
@@ -58,7 +58,7 @@ public class DetailMovieFragment extends Fragment {
     private ImageView imgThumb;
     private RecyclerView recommMovieRecyclerView;
     private ListRecommMovieAdapter recommMovieAdapter;
-    private ArrayList<MovieModel> recommMovieArrList = new ArrayList<>();
+    private ArrayList<MovieEntity> recommMovieArrList = new ArrayList<>();
     private String strCredits = "";
 
     public DetailMovieFragment() {
@@ -78,7 +78,7 @@ public class DetailMovieFragment extends Fragment {
         imgThumb = view.findViewById(R.id.img_movie_thumb);
         recommMovieRecyclerView = view.findViewById(R.id.rv_detail_movie);
 
-        final MovieModel EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
+        final MovieEntity EX = Objects.requireNonNull(getActivity()).getIntent().getParcelableExtra(GlobVar.EX_MOVIE);
         SessionManager session = new SessionManager(getContext());
         String prevLang = session.getPrevLang();
         String currLang = getActivity().getResources().getString(R.string.language);
@@ -88,7 +88,7 @@ public class DetailMovieFragment extends Fragment {
             movieData = savedInstanceState.getParcelable(GlobVar.EX_MOVIE);
             setupUI(movieData);
             // LIST MOVIE RECOMM
-            List<MovieModel> movie_recomm = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE_RECOMM);
+            List<MovieEntity> movie_recomm = savedInstanceState.getParcelableArrayList(GlobVar.EX_MOVIE_RECOMM);
             recommMovieArrList.addAll(movie_recomm);
             setupRecommRecyclerView();
             //MOVIE CREDITS
@@ -116,7 +116,7 @@ public class DetailMovieFragment extends Fragment {
                 viewModel.init("en-US");
                 viewModel.initRecommendation(EX.getId(), prevLang,currLang);
                 viewModel.getRecommMovie().observe(getActivity(), response -> {
-                    recommMovieArrList.addAll(response.getMovieList());
+                    recommMovieArrList.addAll(response.getResults());
                     setupRecommRecyclerView();
                 });
 
@@ -136,12 +136,12 @@ public class DetailMovieFragment extends Fragment {
                     txtStars.setText(strCredits);
                 });
             }else{
-                Toast.makeText(getContext(), R.string.koneksi, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), R.string.lbl_connection_info, Toast.LENGTH_LONG).show();
             }
         }
 
         if (getArguments() != null) {
-            final MovieModel EXT = getArguments().getParcelable(GlobVar.EX_MOVIE);
+            final MovieEntity EXT = getArguments().getParcelable(GlobVar.EX_MOVIE);
             txtTitle.setText(EX.getTitle());
             txtYear.setText(EX.getDate());
             txtSynopnsis.setText(EX.getOverview());
@@ -169,7 +169,7 @@ public class DetailMovieFragment extends Fragment {
         }
         recommMovieAdapter.setOnItemClickCallback(new ListRecommMovieAdapter.OnItemClickCallback() {
             @Override
-            public void onItemClicked(MovieModel data) {
+            public void onItemClicked(MovieEntity data) {
                 Intent intent = new Intent(getContext(), DetailMovieActivity.class);
                 intent.putExtra(GlobVar.EX_MOVIE, data);
                 startActivity(intent);
@@ -184,7 +184,7 @@ public class DetailMovieFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_detail_movie, container, false);
     }
 
-    public void setupUI(MovieModel data) {
+    public void setupUI(MovieEntity data) {
         txtTitle.setText(data.getTitle());
         txtYear.setText(data.getDate());
         txtSynopnsis.setText(data.getOverview());

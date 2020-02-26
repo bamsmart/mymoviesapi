@@ -24,7 +24,7 @@ import java.util.Objects;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import learning.shinesdev.mymoviesapi.R;
 import learning.shinesdev.mymoviesapi.adapter.FavoriteAdapter;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 import learning.shinesdev.mymoviesapi.utils.SessionManager;
 import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
 
@@ -34,7 +34,7 @@ import learning.shinesdev.mymoviesapi.viewmodel.MovieViewModel;
  */
 public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItemClickListener {
 
-    private List<MovieModel> mMovie = new ArrayList<>();
+    private List<MovieEntity> mMovie = new ArrayList<>();
 
     private RecyclerView rvMovies;
     private FavoriteAdapter listMovieAdapter;
@@ -63,9 +63,9 @@ public class FavoriteFragment extends Fragment implements FavoriteAdapter.OnItem
 
         viewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
         viewModel.init(getActivity().getApplication());
-        viewModel.getFavoriteMovie().observe(this, new Observer<List<MovieModel>>() {
+        viewModel.getFavoriteMovie().observe(this, new Observer<List<MovieEntity>>() {
             @Override
-            public void onChanged(List<MovieModel> movie) {
+            public void onChanged(List<MovieEntity> movie) {
                 progressBar.setVisibility(View.GONE);
                 listMovieAdapter.setData(movie);
                 mMovie = movie;

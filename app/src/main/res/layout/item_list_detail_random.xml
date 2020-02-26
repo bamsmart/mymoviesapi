@@ -31,7 +31,7 @@
                 style="@style/LabelContent.Title"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
-                android:text="@string/title" />
+                android:text="@string/lbl_title" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

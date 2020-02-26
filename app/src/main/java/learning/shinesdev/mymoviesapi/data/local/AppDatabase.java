@@ -6,16 +6,16 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
-@Database(entities = {MovieModel.class}, version = 1,exportSchema = false)
-public abstract class DatabaseConfig extends RoomDatabase {
-    private static DatabaseConfig mInstance;
+@Database(entities = {MovieEntity.class}, version = 1,exportSchema = false)
+public abstract class AppDatabase extends RoomDatabase {
+    private static AppDatabase mInstance;
 
-    public static DatabaseConfig getDatabase(Context context){
+    public static AppDatabase getDatabase(Context context){
         if (mInstance == null){
             mInstance = Room.databaseBuilder(context.getApplicationContext(),
-                    DatabaseConfig.class,"movie_db")
+                    AppDatabase.class,"movie_db")
                     .build();
         }
         return mInstance;

@@ -15,16 +15,16 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import learning.shinesdev.mymoviesapi.R;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
 @SuppressWarnings("ALL")
 public class ListRecommMovieAdapter extends RecyclerView.Adapter<ListRecommMovieAdapter.MyViewHolder> {
     private final Context context;
     private final LayoutInflater inflater;
-    private final ArrayList<MovieModel> movieList;
+    private final ArrayList<MovieEntity> movieList;
     private OnItemClickCallback onItemClickCallbacks;
 
-    public ListRecommMovieAdapter(Context ctx, ArrayList<MovieModel> list){
+    public ListRecommMovieAdapter(Context ctx, ArrayList<MovieEntity> list){
         inflater = LayoutInflater.from(ctx);
         this.context = ctx;
         this.movieList = list;
@@ -40,7 +40,7 @@ public class ListRecommMovieAdapter extends RecyclerView.Adapter<ListRecommMovie
 
     @Override
     public void onBindViewHolder(final ListRecommMovieAdapter.MyViewHolder holder, int position) {
-        MovieModel movieModel = movieList.get(position);
+        MovieEntity movieModel = movieList.get(position);
         holder.time.setText(movieModel.getTitle());
         String img_url = "https://image.tmdb.org/t/p/w600_and_h900_bestv2"+movieModel.getImage();
         try {
@@ -71,7 +71,7 @@ public class ListRecommMovieAdapter extends RecyclerView.Adapter<ListRecommMovie
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(MovieModel data);
+        void onItemClicked(MovieEntity data);
     }
     public void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
         this.onItemClickCallbacks = onItemClickCallback;

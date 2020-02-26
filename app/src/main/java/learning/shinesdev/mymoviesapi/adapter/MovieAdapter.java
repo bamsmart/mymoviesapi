@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import learning.shinesdev.mymoviesapi.R;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ListViewHolder> {
     private final Context context;
@@ -26,9 +26,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ListViewHold
         this.onItemClickCallback = onItemClickCallback;
     }
 
-    private final ArrayList<MovieModel> listMovie;
+    private final ArrayList<MovieEntity> listMovie;
 
-    public MovieAdapter(Context context, ArrayList<MovieModel> list) {
+    public MovieAdapter(Context context, ArrayList<MovieEntity> list) {
         this.context = context;
         this.listMovie = list;
     }
@@ -42,7 +42,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ListViewHold
 
     @Override
     public void onBindViewHolder(@NonNull final MovieAdapter.ListViewHolder holder, int position) {
-        MovieModel movieModel = listMovie.get(position);
+        MovieEntity movieModel = listMovie.get(position);
         holder.txtTitle.setText(movieModel.getTitle());
         holder.txtYear.setText(movieModel.getDate());
         holder.txtOverview.setText(movieModel.getOverview());
@@ -90,6 +90,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ListViewHold
     }
 
     public interface OnItemClickCallback {
-        void onItemClicked(MovieModel data);
+        void onItemClicked(MovieEntity data);
     }
 }

@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import learning.shinesdev.mymoviesapi.R;
-import learning.shinesdev.mymoviesapi.model.MovieModel;
+import learning.shinesdev.mymoviesapi.model.MovieEntity;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MovieHolder> {
 
     private final Context context;
-    private List<MovieModel> listMovie = new ArrayList<>();
+    private List<MovieEntity> listMovie = new ArrayList<>();
 
     private OnItemClickListener mOnItemClickListener;
 
@@ -29,7 +29,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MovieH
         this.context = context;
     }
 
-    public void setData(List<MovieModel> list){
+    public void setData(List<MovieEntity> list){
         this.listMovie = list;
         notifyDataSetChanged();
     }
@@ -47,7 +47,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.MovieH
 
     @Override
     public void onBindViewHolder(@NonNull final MovieHolder holder, int position) {
-        MovieModel movieModel = listMovie.get(position);
+        MovieEntity movieModel = listMovie.get(position);
         holder.txtTitle.setText(movieModel.getTitle());
         holder.txtYear.setText(movieModel.getDate());
         holder.txtOverview.setText(movieModel.getOverview());
